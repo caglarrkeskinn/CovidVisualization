@@ -36,16 +36,20 @@ export default class Cards extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: 130,
-        width: 130,
+        height: 80,
+        width:  164,
         borderRadius: 30,
         padding: 15,
-        marginLeft: 20
+        marginLeft: 20,
+        marginBottom: 12,
+        
     },
     col: {
         flexDirection: "row"
     },
     title: {
+        alignSelf: "center",
+        position:"absolute",
         marginTop: 5,
         color: '#533219',
         fontWeight: "bold",
@@ -54,5 +58,8 @@ const styles = StyleSheet.create({
     number: {
         fontWeight: "bold",
         fontSize: 22,
+        justifyContent:"center",
+        
+        
     }
 })

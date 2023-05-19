@@ -2,26 +2,20 @@ import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
 
+
+
+
+
 const ItemRows = ({ item }) => {
     return (
         <View style={styles.rows}>
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around'
-            }}>
-                <View>
-                    <Image
-                        source={{ 
-                            uri: `https://flagsapi.com/${item.CountryCode}/flat/64.png`
-                        }}
-                        style={styles.flag}
-                    />
-                </View>
+            <View style={{flexDirection: 'row',justifyContent: 'space-around'}}>
+                
                 <View style={{ marginRight: 100, marginTop: 5 }}>
-                    <Text style={styles.countryName}>{item.Country}</Text>
+                    <Text style={styles.countryName}>{item.Countries}</Text>
                 </View>
                 <View>
-                    <Text style={styles.totalCases}>{item.TotalConfirmed}</Text>
+                    <Text style={styles.totalCases}>{item.n}</Text>
                 </View>
             </View>
         </View>
