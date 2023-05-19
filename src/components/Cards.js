@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
-    StyleSheet
+    Text
 } from 'react-native';
 import Icon from 'react-native-ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import stylesCatalog from './stylesCatalog';
 export default class Cards extends Component {
     render() {
         return (
             <View style={{
-                ...styles.container,
+                ...stylesCatalog.container2,
                 backgroundColor: this.props.bg
             }}>
-                <View style={styles.col}>
+                <View style={stylesCatalog.col}>
                     <Icon
                         name={this.props.icon}
                         size={30}
                         color={this.props.bg == "#D93B4A" ? "#fff" : "red"}
                     />
                 </View>
-                <Text style={styles.title}>{this.props.title}</Text>
-                <Text styles={{
-                    ...styles.number,
+                <Text style={stylesCatalog.title}>{this.props.title}</Text>
+                <Text style={{
+                    ...stylesCatalog.number,
                     color: this.props.bg == "#D93B4A" ? "#FFF" : "#000"
                 }}>
                     {this.props.number}
@@ -31,35 +30,5 @@ export default class Cards extends Component {
             </View>
         )
     }
-}
+};
 
-
-const styles = StyleSheet.create({
-    container: {
-        height: 80,
-        width:  164,
-        borderRadius: 30,
-        padding: 15,
-        marginLeft: 20,
-        marginBottom: 12,
-        
-    },
-    col: {
-        flexDirection: "row"
-    },
-    title: {
-        alignSelf: "center",
-        position:"absolute",
-        marginTop: 5,
-        color: '#533219',
-        fontWeight: "bold",
-        flexShrink: 12
-    },
-    number: {
-        fontWeight: "bold",
-        fontSize: 22,
-        justifyContent:"center",
-        
-        
-    }
-})
