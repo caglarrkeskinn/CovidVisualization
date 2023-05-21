@@ -27,23 +27,36 @@ export const stylesCatalog = StyleSheet.create({
       
       homeButton: {
         borderRadius: 30,
-        backgroundColor: "tomato",
+        backgroundColor: "#3F414E",
         position: "absolute",
-        top: "5%",
-        left: "5%",
+        top: "75%",
+        justifyContent:'center',
+        position:"absolute",
+        width:  140,
+        height: 45,
       },
       covidHeading: {
         color: "#FFF",
+        fontSize: 20,
+        alignSelf: "center",
+        fontWeight: "bold",
+        margin: 25,
+        marginTop: "10%",
+        
+      },
+      notification: {
+        color: "#FFF",
         fontSize: 16,
-        alignSelf: "flex-start",
+        alignSelf: "flex-end",
         fontWeight: "bold",
         margin: 20,
         marginTop: "15%",
         
       },
-      mapHeading: {
-        //fontFamily: 'Roboto',
-        color: "#FFF",
+      homeButtonHeading: {
+        
+        color: "white",
+        position:"absolute",
         fontSize: 16,
         alignSelf: "center",
         fontWeight: "bold",    
@@ -65,7 +78,7 @@ export const stylesCatalog = StyleSheet.create({
       flatList: {
       marginTop: 10,
       },
-      box: {
+      boxStatistics: {
         borderWidth: 2,
         borderColor: "#27546C",
         alignItems: "center",
@@ -75,13 +88,35 @@ export const stylesCatalog = StyleSheet.create({
         backgroundColor: "#27546C",
         height: 169,
       },
+      boxHome: {
+        borderWidth: 2,
+        borderColor: "#27546C",
+        alignItems: "center",
+        textAlign: "center",
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+        backgroundColor: "#27546C",
+        height: 299,
+      },
+      boxNews: {
+        borderWidth: 2,
+        borderColor: "#27546C",
+        alignItems: "center",
+        textAlign: "center",
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+        backgroundColor: "#27546C",
+        height: 120,
+      },
     
-      box2:{
+    
+      boxCard:{
         borderWidth: 2,
         borderColor: "white",
         width: 171,
         height: 184,
         alignItems: "center",
+        justifyContent:'center',
         textAlign: "center",
         borderRadius:25,
         backgroundColor: "white",
@@ -143,7 +178,7 @@ export const stylesCatalog = StyleSheet.create({
           fontWeight: 'bold'
       },
       totalCases: {
-          fontSize: 12,
+          fontSize: 16,
           color:'#fff',
           fontWeight: 'bold',
           marginTop: 5
@@ -164,15 +199,46 @@ export const stylesCatalog = StyleSheet.create({
           marginTop: 5,
           color: '#533219',
           fontWeight: "bold",
-          flexShrink: 12
+          flexShrink: 12,
+          fontSize: 16,
+          
       },
+      titleBigBox: {
+        alignSelf: "center",
+        position:"absolute",
+        marginTop: 5,
+        color: '#533219',
+        fontWeight: "bold",
+        //flexShrink: 12,
+        fontSize: 16,
+        
+    },
       number: {
-          fontWeight: "bold",
-          fontSize: 22,
-          justifyContent:"center",
+        
+          fontWeight: '500',
           
-          
+          justifyContent:'center',
+          alignSelf:'center',
+          marginTop:15
+            
+      },
+      preventionText:{
+        marginTop:5,
+        alignSelf:'flex-start',
+        padding:10,
+        fontWeight:'bold',
+        fontSize: 22,
+        color: 'white',
+      },
+      articleText:{
+        marginTop:5,
+        alignSelf:'flex-start',
+        padding:10,
+        fontWeight:'bold',
+        fontSize: 22,
+        color: 'white',
       }
+
       
       
 });

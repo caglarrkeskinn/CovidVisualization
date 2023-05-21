@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text
+    Text,
+
 } from 'react-native';
-import Icon from 'react-native-ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import stylesCatalog from './stylesCatalog';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+
 export default class Cards extends Component {
     render() {
         return (
@@ -14,19 +18,11 @@ export default class Cards extends Component {
                 backgroundColor: this.props.bg
             }}>
                 <View style={stylesCatalog.col}>
-                    <Icon
-                        name={this.props.icon}
-                        size={30}
-                        color={this.props.bg == "#D93B4A" ? "#fff" : "red"}
-                    />
+                    
                 </View>
+                
                 <Text style={stylesCatalog.title}>{this.props.title}</Text>
-                <Text style={{
-                    ...stylesCatalog.number,
-                    color: this.props.bg == "#D93B4A" ? "#FFF" : "#000"
-                }}>
-                    {this.props.number}
-                </Text>
+                <Text style={{...stylesCatalog.number }}>{this.props.number}</Text>
             </View>
         )
     }
