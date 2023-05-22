@@ -1,15 +1,15 @@
 import React from 'react';
-//import {createStackNavigator} from '@react-navigation/stack';
+
 import Statistics from '../screens/Statistics';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import News from '../screens/News';
 import Map from '../screens/Map';
-//import  MaterialCommunityIcons  from '@expo/vector-icons';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-//const Stack = createStackNavigator();
+
 const Tab = createBottomTabNavigator();
 
 

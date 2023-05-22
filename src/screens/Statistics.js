@@ -115,13 +115,13 @@ const [par, setPar] = useState(true);
               
 
                 title="Recovered"
-                bg="#83F0E0"
+                bg="#27546C"
                 number={recovered}
               /> 
 
               <Cards
                 title="Death Reported"
-                bg="#FF758A"
+                bg="#27546C"
                 number={recovered}
               /> 
               

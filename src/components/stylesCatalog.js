@@ -13,7 +13,17 @@ export const stylesCatalog = StyleSheet.create({
       },
       container: {
         flex: 1,
-        backgroundColor: "#1c2732",
+        backgroundColor: "white",
+      },
+      cardStyle:{
+        
+        margin: 10,
+        borderWidth:1,
+        borderColor:'gray',
+      },
+      cardImage:{
+        height: 150, 
+        width: '100%' 
       },
       container2: {
         height: 80,
@@ -69,7 +79,7 @@ export const stylesCatalog = StyleSheet.create({
       casesHeading: {
         marginTop: 20,
     
-        color: "#FFF",
+        color: "black",
         fontSize: 15,
         alignSelf: "center",
         fontWeight: "bold",
@@ -77,6 +87,9 @@ export const stylesCatalog = StyleSheet.create({
       },
       flatList: {
       marginTop: 10,
+      borderTopWidth:2,
+      borderColor:'black'
+      
       },
       boxStatistics: {
         borderWidth: 2,
@@ -119,11 +132,14 @@ export const stylesCatalog = StyleSheet.create({
         justifyContent:'center',
         textAlign: "center",
         borderRadius:25,
-        backgroundColor: "white",
+        backgroundColor: "#27546C",
+        borderWidth:1,
+        borderColor:'gray',
         left: 211,
         top: 10
       },
       map: {
+        flex:1,
         width: "100%",
         height: "100%",
       },
@@ -170,16 +186,17 @@ export const stylesCatalog = StyleSheet.create({
         width: '100%',
         marginTop: 10,
         marginBottom: 8,
-        padding: 10
+        padding: 10,
+        
       },
       countryName: {
           fontSize: 15,
-          color:'#fff',
+          color:'black',
           fontWeight: 'bold'
       },
       totalCases: {
           fontSize: 16,
-          color:'#fff',
+          color:'black',
           fontWeight: 'bold',
           marginTop: 5
       },
@@ -193,11 +210,11 @@ export const stylesCatalog = StyleSheet.create({
       col: {
           flexDirection: "row"
       },
-      title: {
+      cardsTitle: {
           alignSelf: "center",
           position:"absolute",
           marginTop: 5,
-          color: '#533219',
+          color: 'black',
           fontWeight: "bold",
           flexShrink: 12,
           fontSize: 16,
@@ -228,7 +245,7 @@ export const stylesCatalog = StyleSheet.create({
         padding:10,
         fontWeight:'bold',
         fontSize: 22,
-        color: 'white',
+        color: 'black',
       },
       articleText:{
         marginTop:5,
@@ -236,7 +253,7 @@ export const stylesCatalog = StyleSheet.create({
         padding:10,
         fontWeight:'bold',
         fontSize: 22,
-        color: 'white',
+        color: 'black',
       }
 
       

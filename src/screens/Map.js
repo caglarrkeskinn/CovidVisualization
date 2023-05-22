@@ -58,6 +58,7 @@ const Map = () => {
     
             <View style={{ flex: 1 }}>
               <MapView
+                provider={"google"}
                 style={stylesCatalog.map}
                 showsUserLocation={true}
                 initialRegion={{
@@ -68,14 +69,18 @@ const Map = () => {
                 }}
               >
                 <Heatmap
-                  points={heatmapData1}
-                  radius={40}
-                  opacity={1}
-                  gradient={{
-                    colors: ["#ff0000", "#00ff00"],
-                    startPoints: [0, 1],
-                    colorMapSize: 100,
-                  }}
+                      points={heatmapData1}
+                      radius={25}
+                      gradient={
+                        Platform.OS === "android"
+                          ? undefined
+                          : {
+                              // #00FF0011 = lime with a bit of alpha
+                              colors: ["transparent", "#00FF0011", "lime", "yellow", "red"],
+                              startPoints: [0, 0.000001, 0.0001, 0.0003, 0.0006],
+                              colorMapSize: 131072,
+                            }
+                      }
                 />
               </MapView>
               </View>

@@ -21,7 +21,7 @@ export default class Cards extends Component {
                     
                 </View>
                 
-                <Text style={stylesCatalog.title}>{this.props.title}</Text>
+                <Text style={stylesCatalog.cardsTitle}>{this.props.title}</Text>
                 <Text style={{...stylesCatalog.number }}>{this.props.number}</Text>
             </View>
         )
