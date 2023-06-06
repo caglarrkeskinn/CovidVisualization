@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { CardTitle, CardImage, CardCover } from "react-native-cards";
 import { Card } from "react-native-paper";
 
+
 const handlePhoneCall = () => {
   const phoneNumber = "911"; // Replace with the desired phone number
 
@@ -17,7 +18,7 @@ const Home = () => {
     <View style={stylesCatalog.container}>
       <View style={stylesCatalog.boxHome}>
         <Text style={stylesCatalog.covidHeading}>Covid-19</Text>
-        <TouchableOpacity>
+        <TouchableOpacity > 
           <MaterialCommunityIcons
             name="cog-outline"
             top={"-100%"}
@@ -35,7 +36,7 @@ const Home = () => {
             }}
           >
             Settings
-          </Text>
+          </Text> 
         </TouchableOpacity>
         <TouchableOpacity>
           <MaterialCommunityIcons

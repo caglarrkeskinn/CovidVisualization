@@ -254,6 +254,15 @@ export const stylesCatalog = StyleSheet.create({
         fontWeight:'bold',
         fontSize: 22,
         color: 'black',
+      },
+      tabBarStyle:{
+        position:'absolute',
+        borderRadius:15,
+        
+
+        
+
+
       }
 
       

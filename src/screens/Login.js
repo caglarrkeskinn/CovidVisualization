@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity ,Image } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const LoginPage = () => {
   const [showLoginForm, setShowLoginForm] = useState(true);
@@ -7,6 +8,8 @@ const LoginPage = () => {
   const [showSignInForm, setShowSignInForm] = useState(false);
   const renderLoginForm = () => (
     <View>
+      
+      <Image style={{left:'5%'}} source={require('../Images/virus.png')} />
       <Text style={styles.title}>COVID TRACKER</Text>
       <TouchableOpacity style={styles.button} onPress={() => setShowSignInForm(true)}>
         <Text style={styles.buttonText}>Sign In</Text>
