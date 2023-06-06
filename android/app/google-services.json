@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509552608279",
+    "project_id": "covid-tracker-4de6d",
+    "storage_bucket": "covid-tracker-4de6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509552608279:android:b3be1a892c7ccfb3480852",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509552608279-3gimcvotid0qifie0jg68oa74atasumc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD8Dyqs1ig3EyJQgcTU_wSj__fxq0r_7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509552608279-3gimcvotid0qifie0jg68oa74atasumc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
