@@ -14,37 +14,6 @@ import stylesCatalog from "../components/stylesCatalog";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function HomeStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
-
-function StatisticsStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Statistics" component={Statistics} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
-
-function MapStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Map" component={Map} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
-
-function NewsStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="News" component={News} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
 
 function AuthNavigator() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -60,7 +29,7 @@ function AuthNavigator() {
       <Tab.Navigator screenOptions={{ tabBarActiveTintColor: 'black', tabBarStyle: stylesCatalog.tabBarStyle }}>
         <Tab.Screen
           name="Home"
-          component={HomeStack}
+          component={Home}
           options={{
             headerShown:false ,
             tabBarIcon: ({ color, size }) => (
@@ -70,7 +39,7 @@ function AuthNavigator() {
         />
         <Tab.Screen
           name="Statistics"
-          component={StatisticsStack}
+          component={Statistics}
           options={{
             headerShown:false ,
             tabBarIcon: ({ color, size }) => (
@@ -80,7 +49,7 @@ function AuthNavigator() {
         />
         <Tab.Screen
           name="Map"
-          component={MapStack}
+          component={Map}
           options={{
             headerShown:false ,
             tabBarIcon: ({ color, size }) => (
@@ -90,7 +59,7 @@ function AuthNavigator() {
         />
         <Tab.Screen
           name="News"
-          component={NewsStack}
+          component={News}
           options={{
             headerShown:false ,
             tabBarIcon: ({ color, size }) => (
