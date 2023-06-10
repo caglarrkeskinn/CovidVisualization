@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import stylesCatalog from "../components/stylesCatalog";
 import { ScrollView } from "react-native-gesture-handler";
@@ -86,13 +86,13 @@ const [par, setPar] = useState(true);
           <View style={stylesCatalog.boxCard}>
                 <View style={{alignItems:'center'}}> 
                 
-                  <Text style={{ fontSize:24,fontWeight: "600",marginTop:5}}>Total Cases</Text>
+                  <Text style={{ fontSize:22,fontWeight: "600",marginTop:5,color: 'white',}}>Total Cases</Text>
                  
-                  <Text style={{ fontSize:22,fontWeight: "500",marginTop:10,}}>{totalCases}</Text>
+                  <Text style={{ fontSize:20,fontWeight: "400",marginTop:15,color: 'white'}}>{totalCases}</Text>
                   
                 </View>
                 <View>
-                <MaterialCommunityIcons name="chart-bar"   marginTop={30} color={color='black'} size={size=60 }/>
+                <MaterialCommunityIcons name="chart-bar"   marginTop={27} color={color='white'} size={size=60 }/>
                 </View>
 
             </View> 
@@ -117,6 +117,7 @@ const [par, setPar] = useState(true);
                 title="Recovered"
                 bg="#27546C"
                 number={recovered}
+              
               /> 
 
               <Cards

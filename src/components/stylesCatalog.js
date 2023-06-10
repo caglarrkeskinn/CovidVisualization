@@ -21,12 +21,15 @@ export const stylesCatalog = StyleSheet.create({
         borderWidth:1,
         borderColor:'gray',
       },
+      scrollContainer:{
+        marginBottom:150
+      },
       cardImage:{
-        height: 150, 
-        width: '100%' 
+        height: 135, 
+        width: '100%'
       },
       container2: {
-        height: 80,
+        height: 100,
         width:  164,
         borderRadius: 30,
         padding: 15,
@@ -208,13 +211,14 @@ export const stylesCatalog = StyleSheet.create({
       },
       
       col: {
-          flexDirection: "row"
+          flexDirection: "row",
+          marginBottom: 45
       },
       cardsTitle: {
           alignSelf: "center",
           position:"absolute",
           marginTop: 5,
-          color: 'black',
+          color: 'white',
           fontWeight: "bold",
           flexShrink: 12,
           fontSize: 16,
@@ -233,10 +237,10 @@ export const stylesCatalog = StyleSheet.create({
       number: {
         
           fontWeight: '500',
-          
+          color: 'white',
           justifyContent:'center',
           alignSelf:'center',
-          marginTop:15
+          marginTop:0
             
       },
       preventionText:{
