@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import { supabase } from "../lib/supabase";
+import  supabase  from "../lib/supabase";
 import { Button, Input } from "react-native-elements";
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from "../navigations/Navigator";
@@ -36,7 +36,7 @@ export default function Login() {
 return (
     
 <View style={styles.container}>
-  {!loading1 ? (
+  
     <>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input
@@ -75,11 +75,7 @@ return (
         />
       </View>
     </>
-  ) : (
-    <NavigationContainer>
-      <AuthNavigator />
-    </NavigationContainer>
-  )}
+  
 </View>
 
   );

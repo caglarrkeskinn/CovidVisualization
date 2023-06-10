@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
+import  supabase  from "../lib/supabase";
 import { StyleSheet, View, Alert } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
@@ -8,7 +8,7 @@ export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [website, setWebsite] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+
   const [bloodType, setBloodType] = useState("");
 
   useEffect(() => {
@@ -20,20 +20,27 @@ export default function Account({ session }) {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
 
-      let { data, error, status } = await supabase
+      let { data:profileData, error, status } = await supabase
         .from("profiles")
-        .select(username, website, avatar_url, bloodType)
+        .select(username, website, bloodType)
         .eq("id", session?.user.id)
         .single();
       if (error && status !== 406) {
         throw error;
       }
 
-      if (data) {
-        setUsername(data.username);
-        setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
-        setBloodType(data.bloodType);
+      if (profileData) {
+        setUsername(profileData.username);
+        setWebsite(profileData.website);
+        setBloodType(profileData.bloodType);
+      }
+      let { data: emailData } = await supabase
+        .from("users")
+        .select("email")
+        .eq("id", session.user.id)
+        .single();
+      if (emailData) {
+        session.user.email = emailData.email;
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -47,7 +54,6 @@ export default function Account({ session }) {
   async function updateProfile({
     username,
     website,
-    avatar_url,
     bloodType,
   }) {
     try {
@@ -58,7 +64,7 @@ export default function Account({ session }) {
         id: session?.user.id,
         username,
         website,
-        avatar_url,
+        
         bloodType,
         updated_at: new Date(),
       };
@@ -111,7 +117,7 @@ return (
               username,
               website,
               bloodType,
-              avatar_url: avatarUrl,
+              
             })
           }
           disabled={loading}

@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Login from '../screens/Login';
+import Account from "../screens/Account";
 import Home from '../screens/Home';
 import Statistics from '../screens/Statistics';
 import News from '../screens/News';
@@ -68,6 +69,16 @@ function AuthNavigator() {
                 color={color}
                 size={size}
               />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Account"
+          component={Account}
+          options={{
+            headerShown:false ,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="account-outline" color={color} size={size} />
             ),
           }}
         />
