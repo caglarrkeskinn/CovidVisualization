@@ -25,7 +25,9 @@ const Home = () => {
   };
   return (
     <View style={stylesCatalog.container}>
+      
       <View style={stylesCatalog.boxHome}>
+      
         <Text style={stylesCatalog.covidHeading}>Covid-19</Text>
         <TouchableOpacity > 
           <MaterialCommunityIcons

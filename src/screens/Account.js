@@ -20,7 +20,7 @@ export default function Account({ session }) {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
 
-      let { data:profileData, error, status } = await supabase
+      let { data, error, status } = await supabase
         .from("profiles")
         .select(username, website, bloodType)
         .eq("id", session?.user.id)
@@ -29,18 +29,10 @@ export default function Account({ session }) {
         throw error;
       }
 
-      if (profileData) {
-        setUsername(profileData.username);
-        setWebsite(profileData.website);
-        setBloodType(profileData.bloodType);
-      }
-      let { data: emailData } = await supabase
-        .from("users")
-        .select("email")
-        .eq("id", session.user.id)
-        .single();
-      if (emailData) {
-        session.user.email = emailData.email;
+      if (data) {
+        setUsername(data.username);
+        setWebsite(data.website);
+        setBloodType(data.bloodType);
       }
     } catch (error) {
       if (error instanceof Error) {
