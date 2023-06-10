@@ -1,6 +1,7 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { View } from 'react-native';
-import MapView, { Heatmap } from 'react-native-maps';
+import { Touchable, TouchableOpacity, View } from 'react-native';
+import MapView,{ Heatmap } from 'react-native-maps';
 
 const MapScreen = () => {
   const heatMapData = [
@@ -50,12 +51,15 @@ const MapScreen = () => {
 
 
   ];
-
+ 
   const sanFrancisco = { latitude: 37.774546, longitude: -122.433523 };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1,marginBottom:45}}>
       <MapView
+       provider={"google"}
+       showsUserLocation={true}
+       showsMyLocationButton={true}
         style={{ flex: 1 }}
         region={{
           latitude: sanFrancisco.latitude,
@@ -64,6 +68,7 @@ const MapScreen = () => {
           longitudeDelta: 0.0421,
         }}
       >
+        
         <Heatmap points={heatMapData} opacity={1} />
       </MapView>
     </View>

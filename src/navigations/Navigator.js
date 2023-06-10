@@ -24,7 +24,7 @@ function AuthNavigator() {
 //  !!IMPORTANT!!
 // here condition is 'not ! ' because of the see others screens!!! 
 // delete it(!) before running product!!
-  if (!isAuthenticated) {
+  if (isAuthenticated) {
     return (
       <Tab.Navigator screenOptions={{ tabBarActiveTintColor: 'black', tabBarStyle: stylesCatalog.tabBarStyle }}>
         <Tab.Screen
