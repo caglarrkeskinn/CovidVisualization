@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import  supabase  from "../lib/supabase";
+import supabase from "../lib/supabase";
 import { StyleSheet, View, Alert } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
@@ -22,7 +22,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select(username, website, bloodType)
+        .select("username, website, bloodType")
         .eq("id", session?.user.id)
         .single();
       if (error && status !== 406) {
@@ -43,11 +43,7 @@ export default function Account({ session }) {
     }
   }
 
-  async function updateProfile({
-    username,
-    website,
-    bloodType,
-  }) {
+  async function updateProfile() {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
@@ -56,16 +52,16 @@ export default function Account({ session }) {
         id: session?.user.id,
         username,
         website,
-        
         bloodType,
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates);
+      const { error } = await supabase.from("profiles").upsert(updates);
 
       if (error) {
         throw error;
       }
+      Alert.alert("Profile updated successfully!");
     } catch (error) {
       if (error instanceof Error) {
         Alert.alert(error.message);
@@ -74,7 +70,7 @@ export default function Account({ session }) {
       setLoading(false);
     }
   }
-return (
+  return (
     <View style={styles.container}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input label="Email" value={session?.user?.email} disabled />
@@ -104,14 +100,7 @@ return (
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Button
           title={loading ? "Loading ..." : "Update"}
-          onPress={() =>
-            updateProfile({
-              username,
-              website,
-              bloodType,
-              
-            })
-          }
+          onPress={() => updateProfile()}
           disabled={loading}
         />
       </View>
