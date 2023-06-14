@@ -5,49 +5,49 @@ import MapView, { Heatmap } from "react-native-maps";
 
 const MapScreen = () => {
   const heatMapData = [
-    { latitude: 37.782, longitude: -122.447, weight: 0 },
-    { latitude: 37.782, longitude: -122.445, weight: 1 },
-    { latitude: 37.782, longitude: -122.443, weight: 0 },
-    { latitude: 37.782, longitude: -122.441, weight: 1 },
-    { latitude: 37.782, longitude: -122.439, weight: 0 },
-    { latitude: 37.782, longitude: -122.437, weight: 1 },
-    { latitude: 37.782, longitude: -122.435, weight: 0 },
-    { latitude: 37.785, longitude: -122.447, weight: 1 },
-    { latitude: 37.785, longitude: -122.445, weight: 0 },
-    { latitude: 37.785, longitude: -122.443, weight: 1 },
-    { latitude: 37.785, longitude: -122.441, weight: 0 },
-    { latitude: 37.785, longitude: -122.439, weight: 1 },
-    { latitude: 37.785, longitude: -122.437, weight: 0 },
-    { latitude: 37.785, longitude: -122.435, weight: 1 },
-    { latitude: 37.782, longitude: -122.447, weight: 0 },
-    { latitude: 37.783, longitude: -122.445, weight: 1 },
-    { latitude: 37.783, longitude: -122.443, weight: 0 },
-    { latitude: 37.783, longitude: -122.441, weight: 1 },
-    { latitude: 37.783, longitude: -122.439, weight: 1 },
-    { latitude: 37.782, longitude: -122.439, weight: 1 },
-    { latitude: 37.782, longitude: -122.437, weight: 0 },
-    { latitude: 37.786, longitude: -122.447, weight: 0 },
-    { latitude: 37.786, longitude: -122.445, weight: 1 },
-    { latitude: 37.786, longitude: -122.443, weight: 1 },
-    { latitude: 37.786, longitude: -122.441, weight: 0 },
-    { latitude: 37.785, longitude: -122.435, weight: 1 },
-    { latitude: 37.785, longitude: -122.434, weight: 0 },
-    { latitude: 37.785, longitude: -122.431, weight: 0 },
-    { latitude: 37.785, longitude: -122.431, weight: 0 },
-    { latitude: 37.785, longitude: -122.431, weight: 0 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.431, weight: 1 },
-    { latitude: 37.785, longitude: -122.432, weight: 1 },
+    // { latitude: 37.782, longitude: -122.447, weight: 0 },
+    // { latitude: 37.782, longitude: -122.445, weight: 1 },
+    // { latitude: 37.782, longitude: -122.443, weight: 0 },
+    // { latitude: 37.782, longitude: -122.441, weight: 1 },
+    // { latitude: 37.782, longitude: -122.439, weight: 0 },
+    // { latitude: 37.782, longitude: -122.437, weight: 1 },
+    // { latitude: 37.782, longitude: -122.435, weight: 0 },
+    // { latitude: 37.785, longitude: -122.447, weight: 1 },
+    // { latitude: 37.785, longitude: -122.445, weight: 0 },
+    // { latitude: 37.785, longitude: -122.443, weight: 1 },
+    // { latitude: 37.785, longitude: -122.441, weight: 0 },
+    // { latitude: 37.785, longitude: -122.439, weight: 1 },
+    // { latitude: 37.785, longitude: -122.437, weight: 0 },
+    // { latitude: 37.785, longitude: -122.435, weight: 1 },
+    // { latitude: 37.782, longitude: -122.447, weight: 0 },
+    // { latitude: 37.783, longitude: -122.445, weight: 1 },
+    // { latitude: 37.783, longitude: -122.443, weight: 0 },
+    // { latitude: 37.783, longitude: -122.441, weight: 1 },
+    // { latitude: 37.783, longitude: -122.439, weight: 1 },
+    // { latitude: 37.782, longitude: -122.439, weight: 1 },
+    // { latitude: 37.782, longitude: -122.437, weight: 0 },
+    // { latitude: 37.786, longitude: -122.447, weight: 0 },
+    // { latitude: 37.786, longitude: -122.445, weight: 1 },
+    // { latitude: 37.786, longitude: -122.443, weight: 1 },
+    // { latitude: 37.786, longitude: -122.441, weight: 0 },
+    // { latitude: 37.785, longitude: -122.435, weight: 1 },
+    // { latitude: 37.785, longitude: -122.434, weight: 0 },
+    // { latitude: 37.785, longitude: -122.431, weight: 0 },
+    // { latitude: 37.785, longitude: -122.431, weight: 0 },
+    // { latitude: 37.785, longitude: -122.431, weight: 0 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.431, weight: 1 },
+    // { latitude: 37.785, longitude: -122.432, weight: 1 },
   ];
 
   const centerLat = 37.78582; //location.coords.latitude;
@@ -57,13 +57,14 @@ const MapScreen = () => {
     const lngOffset = (Math.random() - 0.5) * 0.03;
     const latitude = centerLat + latOffset;
     const longitude = centerLng + lngOffset;
-    const weight1 = Math.random(1);
-    const a = Math.random(100);
+    const weight1 = Math.random();
+    const a = Math.random() * 500;
     for (let i = 0; i < a; i++) {
-      latitude;
-      longitude;
-
-      heatMapData.push({ latitude, longitude, weight1 });
+      heatMapData.push({
+        latitude: latitude,
+        longitude: longitude,
+        weight: weight1,
+      });
     }
   }
 

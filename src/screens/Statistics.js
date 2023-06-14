@@ -21,6 +21,8 @@ import supabase from "../lib/supabase";
 const Statistics = () => {
   const [casesData, setCasesData] = useState([]);
   const [trcasesData, settrCasesData] = useState([]);
+  const [totalCases, settotalCases] = useState();
+  const [trtotalCases, settrtotalCases] = useState();
 
   useEffect(() => {
     getCases();
@@ -28,6 +30,12 @@ const Statistics = () => {
 
   useEffect(() => {
     gettrCases();
+  }, []);
+  useEffect(() => {
+    gettotalCases();
+  }, []);
+  useEffect(() => {
+    gettrtotalCases();
   }, []);
 
   async function getCases() {
@@ -66,6 +74,49 @@ const Statistics = () => {
     }
   }
 
+  async function gettotalCases() {
+    try {
+      let { data, error, status } = await supabase
+        .from("cases")
+        .select("Deaths");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let total = 0;
+        data.forEach((item) => {
+          total += item.Deaths;
+        });
+        settotalCases(total);
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
+  async function gettrtotalCases() {
+    try {
+      let { data, error, status } = await supabase
+        .from("trcases")
+        .select("trnumber");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let total = 0;
+        data.forEach((item) => {
+          total += item.trnumber;
+        });
+        settrtotalCases(total);
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
+
   const ItemRowsComponent = ({ item }) => {
     return (
       <View style={stylesCatalog.rows}>
@@ -98,7 +149,7 @@ const Statistics = () => {
     );
   };
 
-  const totalCases = [1232132];
+  //const totalCases = [1232132];
   const recovered = [4545];
   const [par, setPar] = useState(true);
 
@@ -127,47 +178,69 @@ const Statistics = () => {
         />
       </View>
 
-      <View style={stylesCatalog.boxCard}>
-        <View style={{ alignItems: "center" }}>
-          <Text
-            style={{
-              fontSize: 22,
-              fontWeight: "600",
-              marginTop: 5,
-              color: "white",
-            }}
-          >
-            Total Cases
-          </Text>
+      {
+        <View style={stylesCatalog.boxCard}>
+          <View style={{ alignItems: "center" }}>
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: "600",
+                marginTop: 5,
+                color: "white",
+              }}
+            >
+              Recovered
+            </Text>
 
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "400",
-              marginTop: 15,
-              color: "white",
-            }}
-          >
-            {totalCases}
-          </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "400",
+                marginTop: 15,
+                color: "white",
+              }}
+            >
+              15678765
+            </Text>
+          </View>
+          <View>
+            <MaterialCommunityIcons
+              name="chart-bar"
+              marginTop={27}
+              color={(color = "white")}
+              size={(size = 60)}
+            />
+          </View>
         </View>
-        <View>
-          <MaterialCommunityIcons
-            name="chart-bar"
-            marginTop={27}
-            color={(color = "white")}
-            size={(size = 60)}
-          />
+      }
+      {par === true && (
+        <View style={stylesCatalog.cards}>
+          <ScrollView
+            //horizontal
+            //showsHorizontalScrollIndicator={false}
+            style={{ marginTop: -55 }}
+          >
+            <Cards title="Total Cases" bg="#27546C" number={trtotalCases} />
+            <Cards
+              title="Total Deaths"
+              bg="#27546C"
+              number={1.5 * trtotalCases}
+            />
+          </ScrollView>
         </View>
-      </View>
-
-      <View style={stylesCatalog.cards}>
-        <ScrollView style={{ marginTop: -55 }}>
-          <Cards title="Recovered" bg="#27546C" number={recovered} />
-          <Cards title="Death Reported" bg="#27546C" number={recovered} />
-        </ScrollView>
-      </View>
-
+      )}
+      {par === false && (
+        <View style={stylesCatalog.cards}>
+          <ScrollView style={{ marginTop: -55 }}>
+            <Cards title="Total Cases" bg="#27546C" number={totalCases} />
+            <Cards
+              title="Total Deaths"
+              bg="#27546C"
+              number={1.5 * totalCases}
+            />
+          </ScrollView>
+        </View>
+      )}
       <View>
         <View
           style={{
