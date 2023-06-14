@@ -172,7 +172,7 @@ const Statistics = () => {
           testID="gender-switch-selector"
           accessibilityLabel="gender-switch-selector"
           bold
-          style={{ width: 250, marginTop: 10 }}
+          style={{ width: 250, marginTop: 5 }}
           height={31}
           fontSize={16}
         />

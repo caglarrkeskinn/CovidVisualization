@@ -7,6 +7,7 @@ import { CardTitle, CardImage, CardCover } from "react-native-cards";
 import { Card } from "react-native-paper";
 
 
+
 const handlePhoneCall = () => {
   const phoneNumber = "911"; 
 
@@ -15,7 +16,10 @@ const handlePhoneCall = () => {
 
 const Home = () => {
   const [showInfo, setShowInfo] = useState(false);
-
+  
+ 
+  
+  
   const handleInfoPress = () => {
     setShowInfo(true);
   };
@@ -29,7 +33,7 @@ const Home = () => {
       <View style={stylesCatalog.boxHome}>
       
         <Text style={stylesCatalog.covidHeading}>Covid-19</Text>
-        <TouchableOpacity > 
+        <TouchableOpacity  > 
           <MaterialCommunityIcons
             name="account-outline"
             top={"-100%"}
