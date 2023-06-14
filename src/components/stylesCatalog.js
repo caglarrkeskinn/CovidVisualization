@@ -19,11 +19,16 @@ export const stylesCatalog = StyleSheet.create({
     borderWidth: 1,
     borderColor: "gray",
   },
+  prevCardStyle: {
+    height:100,
+    marginTop: 25,
+    borderRadius:100
+  },
   scrollContainer: {
     marginBottom: 150,
   },
   cardImage: {
-    height: 135,
+    height: 130,
     width: "100%",
   },
   container2: {

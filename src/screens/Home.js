@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Linking, Text, FlatList, TouchableOpacity, Modal } from "react-native";
+import { View, Linking, Text, FlatList, TouchableOpacity, Modal,Image,StyleSheet } from "react-native";
 import stylesCatalog from "../components/stylesCatalog";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { ScrollView } from "react-native-gesture-handler";
@@ -126,27 +126,20 @@ const Home = () => {
         <Text style={stylesCatalog.preventionText}>Prevention</Text>
         <View style={stylesCatalog.col}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <Card style={stylesCatalog.cardStyle}>
-              <Card.Cover
-                source={require('../Images/prevention-mask.png')}
-                style={stylesCatalog.cardImage}
-              />
-              <Card.Title title="Use Mask" />
-            </Card>
-            <Card style={stylesCatalog.cardStyle}>
-              <Card.Cover
-                source={require('../Images/prevention-wash.png')}
-                style={stylesCatalog.cardImage}
-              />
-              <Card.Title title="Wash Your Hand" />
-            </Card>
-            <Card style={stylesCatalog.cardStyle}>
-              <Card.Cover
-                source={require('../Images/prevention-close.png')}
-                style={stylesCatalog.cardImage}
-              />
-              <Card.Title title="Avoid Close Contacts" />
-            </Card>
+              <View style={styles.container}>
+                <View style={styles.card}>
+                  <Image source={require('../Images/prevention-mask.png')} style={styles.image} />
+                  <Text style={styles.text}>Use Mask</Text>
+                </View>
+                <View style={styles.card}>
+                  <Image source={require('../Images/prevention-wash.png')} style={styles.image} />
+                  <Text style={styles.text}>Wash Hands</Text>
+                </View>
+                <View style={styles.card}>
+                  <Image source={require('../Images/prevention-contact.jpg')} style={styles.image2} />
+                  <Text style={styles.text}>Avoid Close Contacts</Text>
+                </View>
+              </View>
           </ScrollView>
         </View>
         <Text style={stylesCatalog.articleText}>Surveys</Text>
@@ -257,5 +250,39 @@ const Home = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection:'row'
+  },
+  card: {
+    width: 150,
+    marginLeft:10,
+    marginRight:20,
+  },
+  image: {
+    width: '110%',
+    height: 165,
+    resizeMode: 'center',
+    borderRadius:50
+  },
+  image2: {
+    width: '100%',
+    height: 165,
+    width:170,
+    resizeMode: 'cover',
+    borderRadius:50,
+    
+  },
+  text: {
+    marginTop: 15,
+    marginLeft: 10,
+    textAlign: 'center',
+    fontSize: 16,
+    color: "black"
+    
+  },
+});
 
 export default Home;
