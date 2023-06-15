@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import supabase from "../lib/supabase";
-
 import Account from "../screens/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
@@ -10,7 +9,6 @@ import Home from "../screens/Home";
 import Statistics from "../screens/Statistics";
 import News from "../screens/News";
 import Map from "../screens/Map";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -29,6 +27,7 @@ function AuthNavigator() {
       setSession(session);
     });
   }, []);
+  
   if (session && session.user) {
     return (
       <Tab.Navigator>
@@ -101,7 +100,7 @@ function AuthNavigator() {
               />
             ),
           }}
-        />
+        /> 
       </Tab.Navigator>
     );
   } else {

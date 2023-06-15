@@ -55,7 +55,7 @@ export const stylesCatalog = StyleSheet.create({
   },
   covidHeading: {
     color: "#FFF",
-    fontSize: 20,
+    fontSize: 28,
     alignSelf: "center",
     fontWeight: "bold",
     margin: 25,
@@ -105,7 +105,7 @@ export const stylesCatalog = StyleSheet.create({
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
     backgroundColor: "#27546C",
-    height: 169,
+    height: 150,
   },
   boxHome: {
     borderWidth: 2,

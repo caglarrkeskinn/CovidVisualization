@@ -8,6 +8,7 @@ import {
   Linking
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import stylesCatalog from "../components/stylesCatalog";
 // Haber başlıkları ve içerikleri için örnek veri
 const newsData = [
   {
@@ -54,7 +55,7 @@ const News = () => {
   return (
     <View  style={styles.container}>
           <View style={styles.boxNews}>
-              <Text style={styles.covidHeading}>News</Text>
+              <Text style={stylesCatalog.covidHeading}>News</Text>
           </View>
         <View style={styles.scrollContainer}>    
           <ScrollView>
@@ -80,15 +81,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  covidHeading: {
-    color: "#FFF",
-    fontSize: 20,
-    alignSelf: "center",
-    fontWeight: "bold",
-    margin: 25,
-    marginTop: "10%",
+  // covidHeading: {
+  //   color: "#FFF",
+  //   fontSize: 25,
+  //   alignSelf: "center",
+  //   fontWeight: "bold",
+  //   margin: 25,
+  //   marginTop: "15%",
     
-  },
+  // },
   boxNews: {
     borderWidth: 2,
     borderColor: "#27546C",
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
     backgroundColor: "#27546C",
-    height: 100,
+    height: 150,
   },
   newsContainer: {
     flex: 1,
