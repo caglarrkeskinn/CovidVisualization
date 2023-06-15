@@ -89,6 +89,7 @@ function AuthNavigator() {
         />
         <Tab.Screen
           name="Account"
+          component={() => <Account session={session} />}
           options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => (
@@ -99,9 +100,7 @@ function AuthNavigator() {
               />
             ),
           }}
-        > 
-        {() => <Account session={session} />}
-        </Tab.Screen>
+        /> 
       </Tab.Navigator>
     );
   } else {

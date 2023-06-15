@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import {
-    View,
-    Text,
-
-} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text } from 'react-native';
 import stylesCatalog from './stylesCatalog';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 

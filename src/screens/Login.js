@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Alert, StyleSheet, View , Text , Image ,TouchableOpacity,TextInput } from "react-native";
+import { Alert, View , Text , Image ,TouchableOpacity,TextInput } from "react-native";
 import supabase from "../lib/supabase";
 import { Button, Input } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigator from "../navigations/Navigator";
-
+import stylesCatalog from "../components/stylesCatalog";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,14 +35,14 @@ export default function Login() {
   }
   return (
     <>
-    <View style={styles.boxLogin}>
+    <View style={stylesCatalog.LoginboxLogin}>
     <Image style={{alignSelf:'center',right:5,top:'15%'}} source={require("../Images/virus.png")} ></Image>
-    <Text style={styles.covidHeading}>Covid Visualization</Text>
+    <Text style={stylesCatalog.LogincovidHeading}>Covid Visualization</Text>
     
     </View>
-    <View style={styles.container}>
-      <View style={[styles.verticallySpaced]}>
-        <Text style={styles.labelStyle}>Email</Text>
+    <View style={stylesCatalog.Logincontainer}>
+      <View style={[stylesCatalog.LoginverticallySpaced]}>
+        <Text style={stylesCatalog.LoginlabelStyle}>Email</Text>
           <TextInput
             label="Email"
             leftIcon={{ type: "font-awesome", name: "envelope" }}
@@ -50,11 +50,11 @@ export default function Login() {
             value={email}
             placeholder="email@address.com"
             autoCapitalize="none"
-            style={styles.inputStyle}
+            style={stylesCatalog.LogininputStyle}
           />
         </View>
-        <View style={styles.verticallySpaced}>
-        <Text style={styles.labelStyle}>Password</Text>
+        <View style={stylesCatalog.LoginverticallySpaced}>
+        <Text style={stylesCatalog.LoginlabelStyle}>Password</Text>
           <TextInput 
             label="Password"
             leftIcon={{ type: "font-awesome", name: "lock" }}
@@ -63,13 +63,13 @@ export default function Login() {
             secureTextEntry={true}
             placeholder="Password"
             autoCapitalize="none"
-            style={styles.inputStyle}
-            labelStyle={styles.labelStyle}
+            style={stylesCatalog.LogininputStyle}
+            labelStyle={stylesCatalog.LoginlabelStyle}
           />
         </View>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[stylesCatalog.LoginverticallySpaced, stylesCatalog.Loginmt20]}>
           <TouchableOpacity
-            style={styles.button}
+            style={stylesCatalog.Loginbutton}
             disabled={loading}
             onPress={() => signInWithEmail()}
             onPressOut={() => setLoading1(true)}
@@ -77,9 +77,9 @@ export default function Login() {
             <Text style={{ color: 'white' }}>Sign In</Text>
           </TouchableOpacity>
           </View>
-        <View style={styles.verticallySpaced}>
+        <View style={stylesCatalog.LoginverticallySpaced}>
         <TouchableOpacity
-            style={styles.button}
+            style={stylesCatalog.Loginbutton}
             disabled={loading}
             onPress={() => signUpWithEmail()}
           >
@@ -94,62 +94,4 @@ export default function Login() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 5,
-    padding: 12,
-  },
-  boxLogin: {
-    borderWidth: 2,
-    borderColor: "#27546C",
-    alignItems: "center",
-    textAlign: "center",
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
-    backgroundColor: "#27546C",
-    height: 300,
-   
-  },
-  inputStyle:{
-    
-    padding: 13,
-    borderWidth: 4,
-    borderColor: "#27546C",
-    borderRadius: 30,
-    width: 350,
-  },
-  labelStyle:{
-    color:'#27546C',
-    fontSize:16,
-    fontWeight:'700',
-    padding:12,
-  },
-  covidHeading: {
-    color: "#F19B1F",
-    fontSize: 32,
-    alignSelf: "center",
-    fontWeight: "bold",
-    margin: 25,
-    marginTop: "15%",
-  },
-  verticallySpaced: {
-    
-    paddingTop: 2,
-    paddingBottom: 4,
-    alignSelf: "center",
-    
-  },
-  button:{
-    backgroundColor: '#27546C',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    alignSelf:'center',
-    width:250
 
-  },
-  
-  mt20: {
-    marginTop: 10,
-  },
-});
