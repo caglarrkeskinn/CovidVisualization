@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     padding:12,
   },
   covidHeading: {
-    color: "orange",
+    color: "#F19B1F",
     fontSize: 32,
     alignSelf: "center",
     fontWeight: "bold",

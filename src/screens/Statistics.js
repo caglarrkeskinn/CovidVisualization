@@ -120,7 +120,7 @@ const Statistics = () => {
   const ItemRowsComponent = ({ item }) => {
     return (
       <View style={stylesCatalog.rows}>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ marginRight: 100, marginTop: 5 }}>
             <Text style={stylesCatalog.countryName}>
               {item["Country_Region"]}
@@ -137,7 +137,7 @@ const Statistics = () => {
   const ItemRowsComponentTr = ({ item }) => {
     return (
       <View style={stylesCatalog.rows}>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ marginRight: 100, marginTop: 5 }}>
             <Text style={stylesCatalog.countryName}>{item["region"]}</Text>
           </View>
