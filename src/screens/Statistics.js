@@ -120,7 +120,7 @@ const Statistics = () => {
   const ItemRowsComponent = ({ item }) => {
     return (
       <View style={stylesCatalog.rows}>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ marginRight: 100, marginTop: 5 }}>
             <Text style={stylesCatalog.countryName}>
               {item["Country_Region"]}
@@ -137,7 +137,7 @@ const Statistics = () => {
   const ItemRowsComponentTr = ({ item }) => {
     return (
       <View style={stylesCatalog.rows}>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ marginRight: 100, marginTop: 5 }}>
             <Text style={stylesCatalog.countryName}>{item["region"]}</Text>
           </View>
@@ -224,7 +224,7 @@ const Statistics = () => {
             <Cards
               title="Total Deaths"
               bg="#27546C"
-              number={1.5 * trtotalCases}
+              number={(0.35 * trtotalCases).toFixed()}
             />
           </ScrollView>
         </View>
@@ -236,7 +236,7 @@ const Statistics = () => {
             <Cards
               title="Total Deaths"
               bg="#27546C"
-              number={1.5 * totalCases}
+              number={(0.35 * totalCases).toFixed()}
             />
           </ScrollView>
         </View>
@@ -247,6 +247,7 @@ const Statistics = () => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: -30,
           }}
         >
           <Text style={stylesCatalog.casesHeading}>Covid Cases by region</Text>

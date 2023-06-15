@@ -32,17 +32,17 @@ export const stylesCatalog = StyleSheet.create({
     width: "100%",
   },
   container2: {
-    height: 90,
+    height: 70,
     width: 164,
     borderRadius: 30,
     padding: 15,
     marginLeft: 20,
-    marginBottom: 12,
+    marginBottom: 20,
   },
 
   homeButton: {
     borderRadius: 30,
-    backgroundColor: "red",
+    backgroundColor: "#3F414E",
     position: "absolute",
     top: "78%",
     justifyContent: "center",
@@ -51,7 +51,7 @@ export const stylesCatalog = StyleSheet.create({
     height: 35,
     borderRightWidth: 2,
     borderLeftWidth: 2,
-    borderColor: "black",
+    borderColor: "white",
   },
   covidHeading: {
     color: "#FFF",
@@ -79,7 +79,7 @@ export const stylesCatalog = StyleSheet.create({
   },
 
   cards: {
-    marginTop: -120,
+    marginTop: -95,
   },
   casesHeading: {
     marginTop: 20,
@@ -132,7 +132,7 @@ export const stylesCatalog = StyleSheet.create({
     borderWidth: 2,
     borderColor: "white",
     width: 171,
-    height: 184,
+    height: 160,
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
@@ -140,7 +140,7 @@ export const stylesCatalog = StyleSheet.create({
     backgroundColor: "#27546C",
     borderWidth: 1,
     borderColor: "gray",
-    left: 211,
+    left: "51%",
     top: 10,
   },
   map: {
@@ -211,7 +211,7 @@ export const stylesCatalog = StyleSheet.create({
 
   col: {
     flexDirection: "row",
-    marginBottom: 45,
+    marginBottom: 20,
   },
   cardsTitle: {
     alignSelf: "center",

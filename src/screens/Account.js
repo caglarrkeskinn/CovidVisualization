@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 import supabase from "../lib/supabase";
-import { StyleSheet, View, Alert, TextInput,Text, TouchableOpacity} from "react-native";
+import {
+  StyleSheet,
+  View,
+  Alert,
+  TextInput,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 import stylesCatalog from "../components/stylesCatalog";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -75,69 +83,74 @@ export default function Account({ session }) {
       <View style={styles.boxLogin}>
         <Text style={stylesCatalog.covidHeading}>Account</Text>
       </View>
-    
-    <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-      <Text style={styles.labelStyle}>Email</Text>
-        <TextInput label="Email"  style={styles.inputStyle} value={session?.user?.email} disabled />
-      </View>
-      <View style={styles.verticallySpaced}>
-      <Text style={styles.labelStyle}>User Name</Text>
-        <TextInput
-          label="Username"
-          style={styles.inputStyle}
-          value={username || ""}
-          onChangeText={(text) => setUsername(text)}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-      <Text style={styles.labelStyle}>Website</Text>
-        <TextInput
-          label="Website"
-          style={styles.inputStyle}
-          value={website || ""}
-          onChangeText={(text) => setWebsite(text)}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-      <Text style={styles.labelStyle}>Blood Type</Text>
-        <TextInput
-          label="Blood Type"
-          style={styles.inputStyle}
-          value={bloodType || ""}
-          onChangeText={(text) => setBloodType(text)}
-        />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <View style={[styles.verticallySpaced, styles.mt20]}>
+            <Text style={styles.labelStyle}>Email</Text>
+            <TextInput
+              label="Email"
+              style={styles.inputStyle}
+              value={session?.user?.email}
+              disabled
+            />
+          </View>
+          <View style={styles.verticallySpaced}>
+            <Text style={styles.labelStyle}>User Name</Text>
+            <TextInput
+              label="Username"
+              style={styles.inputStyle}
+              value={username || ""}
+              onChangeText={(text) => setUsername(text)}
+            />
+          </View>
+          <View style={styles.verticallySpaced}>
+            <Text style={styles.labelStyle}>Website</Text>
+            <TextInput
+              label="Website"
+              style={styles.inputStyle}
+              value={website || ""}
+              onChangeText={(text) => setWebsite(text)}
+            />
+          </View>
+          <View style={styles.verticallySpaced}>
+            <Text style={styles.labelStyle}>Blood Type</Text>
+            <TextInput
+              label="Blood Type"
+              style={styles.inputStyle}
+              value={bloodType || ""}
+              onChangeText={(text) => setBloodType(text)}
+            />
+          </View>
 
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-      <TouchableOpacity
-            style={styles.button}
-            disabled={loading}
-            onPress={() => updateProfile()}
-            title={loading ? "Loading ..." : "Update"}
-          >
-            <Text style={{ color: 'white' }}>{loading ? "Loading ..." : "Update"}</Text>
-          </TouchableOpacity>
-       
-      </View>
+          <View style={[styles.verticallySpaced, styles.mt20]}>
+            <TouchableOpacity
+              style={styles.button}
+              disabled={loading}
+              onPress={() => updateProfile()}
+              title={loading ? "Loading ..." : "Update"}
+            >
+              <Text style={{ color: "white" }}>
+                {loading ? "Loading ..." : "Update"}
+              </Text>
+            </TouchableOpacity>
+          </View>
 
-      <View style={styles.verticallySpaced}>
-      <TouchableOpacity
-            style={styles.button}
-            onPress={() => supabase.auth.signOut()}
-           >
-            <Text style={{ color: 'white' }}>Sign Out</Text>
-          </TouchableOpacity>
-       
-      </View>
-    </View>
+          <View style={styles.verticallySpaced}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => supabase.auth.signOut()}
+            >
+              <Text style={{ color: "white" }}>Sign Out</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
     padding: 10,
   },
   boxLogin: {
@@ -149,7 +162,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 25,
     backgroundColor: "#27546C",
     height: 150,
-   
   },
   // covidHeading: {
   //   color: "orange",
@@ -165,29 +177,28 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   mt20: {
-    marginTop: 20,
+    marginTop: "5%",
   },
-  inputStyle:{
-    alignSelf:'center',
+  inputStyle: {
+    alignSelf: "center",
     padding: 13,
     borderWidth: 4,
     borderColor: "#27546C",
     borderRadius: 30,
-    width: 400,
+    width: "100%",
   },
-  labelStyle:{
-    color:'#27546C',
-    fontSize:16,
-    fontWeight:'700',
-    padding:10,
+  labelStyle: {
+    color: "#27546C",
+    fontSize: 16,
+    fontWeight: "700",
+    padding: 10,
   },
-  button:{
-    backgroundColor: '#27546C',
+  button: {
+    backgroundColor: "#27546C",
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center',
-    alignSelf:'center',
-    width:300
-
+    alignItems: "center",
+    alignSelf: "center",
+    width: 300,
   },
 });
