@@ -57,8 +57,8 @@ const MapScreen = () => {
     const lngOffset = (Math.random() - 0.5) * 0.03;
     const latitude = centerLat + latOffset;
     const longitude = centerLng + lngOffset;
-    const weight1 = Math.random();
-    const a = Math.random() * 500;
+    const weight1 = Math.round(Math.random() * 10);
+    const a = Math.round(Math.random() * 10);
     for (let i = 0; i < a; i++) {
       heatMapData.push({
         latitude: latitude,
@@ -84,7 +84,15 @@ const MapScreen = () => {
           longitudeDelta: 0.0421,
         }}
       >
-        <Heatmap points={heatMapData} opacity={1} />
+        <Heatmap
+          points={heatMapData}
+          opacity={1}
+          radius={50}
+          gradient={{
+            colors: ["#79BC6A", "#BBCF4C", "#EEC20B", "#F29305", "#E50000"],
+            startPoints: [0.01, 0.25, 0.5, 0.75, 1],
+          }}
+        />
       </MapView>
     </View>
   );

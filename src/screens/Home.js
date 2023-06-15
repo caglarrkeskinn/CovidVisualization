@@ -456,7 +456,7 @@ const Home = () => {
 
   const [severity, setSeverity] = useState([
     {
-      name: "Ağır",
+      name: "Severe",
       population: 0,
       color: "#F00",
       legendFontColor: "#7F7F7F",
@@ -464,7 +464,7 @@ const Home = () => {
       padding: 30,
     },
     {
-      name: "Hafif",
+      name: "Moderate",
       population: 0,
       color: "rgba(131, 167, 234, 1)",
       legendFontColor: "#7F7F7F",
@@ -489,7 +489,7 @@ const Home = () => {
       if (data) {
         let updatedSeverity = [
           {
-            name: "Ağır",
+            name: "Severe",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
@@ -497,7 +497,7 @@ const Home = () => {
             padding: 70,
           },
           {
-            name: "Hafif",
+            name: "Moderate",
             population: 0,
             color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
@@ -507,11 +507,11 @@ const Home = () => {
         data.forEach((item) => {
           if (item.Covidinasilgecirdiniz === "Ağır") {
             updatedSeverity.find(
-              (severity) => severity.name === "Ağır"
+              (severity) => severity.name === "Severe"
             ).population += 1;
           } else if (item.Covidinasilgecirdiniz === "Hafif") {
             updatedSeverity.find(
-              (severity) => severity.name === "Hafif"
+              (severity) => severity.name === "Moderate"
             ).population += 1;
           }
         });
@@ -519,14 +519,14 @@ const Home = () => {
         setSeverity(updatedSeverity);
         updatedSeverity = [
           {
-            name: "Ağır",
+            name: "Severe",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
           },
           {
-            name: "Hafif",
+            name: "Moderate",
             population: 0,
             color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
@@ -1138,7 +1138,7 @@ const Home = () => {
     <View style={stylesCatalog.container}>
       <View style={stylesCatalog.boxHome}>
         <Text style={stylesCatalog.covidHeading}>Covid-19</Text>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <MaterialCommunityIcons
             name="account-outline"
             top={"-100%"}
@@ -1157,18 +1157,18 @@ const Home = () => {
           >
             Profile
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity onPress={handleInfoPress}>
           <MaterialCommunityIcons
             name="map-marker-question-outline"
-            top={"-200%"}
+            top={"-150%"}
             left={"-45%"}
             color={(color = "white")}
             size={(size = 25)}
           />
           <Text
             style={{
-              top: "-200%",
+              top: "-150%",
               left: "-45%",
               fontSize: 12,
               fontWeight: "400",
@@ -1242,7 +1242,7 @@ const Home = () => {
           style={{
             fontSize: 15,
             fontWeight: "500",
-            marginTop: "-20%",
+            marginTop: "-13%",
             right: "20%",
             color: "white",
           }}
@@ -1475,19 +1475,20 @@ const Home = () => {
                   height: 40,
                   alignSelf: "center",
                   borderRadius: 35,
-
+                  marginTop: "20%",
                   borderColor: "gray",
                   padding: 10,
-                  backgroundColor: "#4aa7b5",
+                  backgroundColor: "#27546C",
                   borderRightWidth: 2,
                   borderLeftWidth: 2,
                 }}
               >
                 <Text
                   style={{
-                    color: "blue",
+                    color: "white",
+                    fontWeight: "bold",
                     textAlign: "center",
-                    textDecorationLine: "underline",
+                    //textDecorationLine: "underline",
                   }}
                 >
                   Go to Survey

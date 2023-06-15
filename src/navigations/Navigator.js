@@ -27,7 +27,7 @@ function AuthNavigator() {
       setSession(session);
     });
   }, []);
-  
+
   if (session && session.user) {
     return (
       <Tab.Navigator>
@@ -88,20 +88,19 @@ function AuthNavigator() {
           }}
         />
         <Tab.Screen
-            name="Account"
-            options={{
-              headerShown: false,
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="account-outline"
-                  color={color}
-                  size={size}
-                />
-              ),
-            }}
-          >
-        {() => <Account session={session} />}
-        </Tab.Screen>
+          name="Account"
+          component={() => <Account session={session} />}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account-outline"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        /> 
       </Tab.Navigator>
     );
   } else {

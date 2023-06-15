@@ -224,7 +224,7 @@ const Statistics = () => {
             <Cards
               title="Total Deaths"
               bg="#27546C"
-              number={1.5 * trtotalCases}
+              number={(0.35 * trtotalCases).toFixed()}
             />
           </ScrollView>
         </View>
@@ -236,7 +236,7 @@ const Statistics = () => {
             <Cards
               title="Total Deaths"
               bg="#27546C"
-              number={1.5 * totalCases}
+              number={(0.35 * totalCases).toFixed()}
             />
           </ScrollView>
         </View>
@@ -247,6 +247,7 @@ const Statistics = () => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: -30,
           }}
         >
           <Text style={stylesCatalog.casesHeading}>Covid Cases by region</Text>
