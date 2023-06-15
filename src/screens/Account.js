@@ -8,7 +8,6 @@ export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [website, setWebsite] = useState("");
-
   const [bloodType, setBloodType] = useState("");
 
   useEffect(() => {

@@ -42,13 +42,16 @@ export const stylesCatalog = StyleSheet.create({
 
   homeButton: {
     borderRadius: 30,
-    backgroundColor: "#3F414E",
+    backgroundColor: "red",
     position: "absolute",
-    top: "75%",
+    top: "78%",
     justifyContent: "center",
     position: "absolute",
-    width: 140,
-    height: 45,
+    width: 100,
+    height: 35,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderColor: "black",
   },
   covidHeading: {
     color: "#FFF",
@@ -112,7 +115,7 @@ export const stylesCatalog = StyleSheet.create({
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
     backgroundColor: "#27546C",
-    height: 299,
+    height: 200,
   },
   boxNews: {
     borderWidth: 2,
