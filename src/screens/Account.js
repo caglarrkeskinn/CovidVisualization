@@ -21,7 +21,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select("username")
+        .select("username, website, bloodType")
         .eq("id", session?.user.id)
         .single();
       if (error && status !== 406) {
@@ -77,10 +77,10 @@ export default function Account({ session }) {
           >
             <Text style={stylesCatalog.labelStyle}>Email</Text>
             <TextInput
-              disabled
               label="Email"
               style={stylesCatalog.inputStyleEmail}
               value={session?.user?.email}
+              disabled
             />
           </View>
           <View style={stylesCatalog.AcverticallySpaced}>
@@ -113,7 +113,7 @@ export default function Account({ session }) {
               style={stylesCatalog.AcButton}
               onPress={() => supabase.auth.signOut()}
             >
-              <Text style={{ color: "white" }}>Log Out</Text>
+              <Text style={{ color: "white" }}>Sign Out</Text>
             </TouchableOpacity>
           </View>
         </View>

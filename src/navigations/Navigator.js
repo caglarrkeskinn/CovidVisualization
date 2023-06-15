@@ -16,7 +16,6 @@ function AuthNavigator() {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
   const [session, setSession] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -89,6 +88,7 @@ function AuthNavigator() {
         />
         <Tab.Screen
           name="Account"
+          component={() => <Account session={session} />}
           options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => (
@@ -99,9 +99,7 @@ function AuthNavigator() {
               />
             ),
           }}
-        >
-          {() => <Account session={session} />}
-        </Tab.Screen>
+        ></Tab.Screen>
       </Tab.Navigator>
     );
   } else {

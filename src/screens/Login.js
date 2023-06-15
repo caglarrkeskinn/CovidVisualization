@@ -17,7 +17,6 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loading1, setLoading1] = useState(false);
 
   async function signInWithEmail() {
     setLoading(true);
