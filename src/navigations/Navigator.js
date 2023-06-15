@@ -100,7 +100,25 @@ function AuthNavigator() {
               />
             ),
           }}
-        /> 
+        > 
+        {() => <Account session={session} />}
+        </Tab.Screen>
+=========
+            name="Account"
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="account-outline"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          >
+        {() => <Account session={session} />}
+        </Tab.Screen> 
+>>>>>>>>> Temporary merge branch 2
       </Tab.Navigator>
     );
   } else {

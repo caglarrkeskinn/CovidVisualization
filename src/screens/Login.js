@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Alert, View , Text , Image ,TouchableOpacity,TextInput } from "react-native";
+import {
+  Alert,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import supabase from "../lib/supabase";
 import { Button, Input } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
@@ -35,14 +42,16 @@ export default function Login() {
   }
   return (
     <>
-    <View style={stylesCatalog.LoginboxLogin}>
-    <Image style={{alignSelf:'center',right:5,top:'15%'}} source={require("../Images/virus.png")} ></Image>
-    <Text style={stylesCatalog.LogincovidHeading}>Covid Visualization</Text>
-    
-    </View>
-    <View style={stylesCatalog.Logincontainer}>
-      <View style={[stylesCatalog.LoginverticallySpaced]}>
-        <Text style={stylesCatalog.LoginlabelStyle}>Email</Text>
+      <View style={stylesCatalog.LoginboxLogin}>
+        <Image
+          style={{ alignSelf: "center", right: 5, top: "15%" }}
+          source={require("../Images/virus.png")}
+        ></Image>
+        <Text style={stylesCatalog.LogincovidHeading}>Covid Visualization</Text>
+      </View>
+      <View style={stylesCatalog.Logincontainer}>
+        <View style={[stylesCatalog.LoginverticallySpaced]}>
+          <Text style={stylesCatalog.LoginlabelStyle}>Email</Text>
           <TextInput
             label="Email"
             leftIcon={{ type: "font-awesome", name: "envelope" }}
@@ -54,8 +63,8 @@ export default function Login() {
           />
         </View>
         <View style={stylesCatalog.LoginverticallySpaced}>
-        <Text style={stylesCatalog.LoginlabelStyle}>Password</Text>
-          <TextInput 
+          <Text style={stylesCatalog.LoginlabelStyle}>Password</Text>
+          <TextInput
             label="Password"
             leftIcon={{ type: "font-awesome", name: "lock" }}
             onChangeText={(text) => setPassword(text)}
@@ -67,31 +76,27 @@ export default function Login() {
             labelStyle={stylesCatalog.LoginlabelStyle}
           />
         </View>
-        <View style={[stylesCatalog.LoginverticallySpaced, stylesCatalog.Loginmt20]}>
+        <View
+          style={[stylesCatalog.LoginverticallySpaced, stylesCatalog.Loginmt20]}
+        >
           <TouchableOpacity
             style={stylesCatalog.Loginbutton}
             disabled={loading}
             onPress={() => signInWithEmail()}
-            onPressOut={() => setLoading1(true)}
           >
-            <Text style={{ color: 'white' }}>Sign In</Text>
+            <Text style={{ color: "white" }}>Sign In</Text>
           </TouchableOpacity>
-          </View>
+        </View>
         <View style={stylesCatalog.LoginverticallySpaced}>
-        <TouchableOpacity
+          <TouchableOpacity
             style={stylesCatalog.Loginbutton}
             disabled={loading}
             onPress={() => signUpWithEmail()}
           >
-            <Text style={{ color: 'white' }}>Sign Up</Text>
+            <Text style={{ color: "white" }}>Sign Up</Text>
           </TouchableOpacity>
-        
         </View>
-      
-      
-    </View>
+      </View>
     </>
   );
 }
-
-

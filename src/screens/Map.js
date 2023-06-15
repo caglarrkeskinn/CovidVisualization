@@ -4,51 +4,7 @@ import { Touchable, TouchableOpacity, View } from "react-native";
 import MapView, { Heatmap } from "react-native-maps";
 
 const MapScreen = () => {
-  const heatMapData = [
-    // { latitude: 37.782, longitude: -122.447, weight: 0 },
-    // { latitude: 37.782, longitude: -122.445, weight: 1 },
-    // { latitude: 37.782, longitude: -122.443, weight: 0 },
-    // { latitude: 37.782, longitude: -122.441, weight: 1 },
-    // { latitude: 37.782, longitude: -122.439, weight: 0 },
-    // { latitude: 37.782, longitude: -122.437, weight: 1 },
-    // { latitude: 37.782, longitude: -122.435, weight: 0 },
-    // { latitude: 37.785, longitude: -122.447, weight: 1 },
-    // { latitude: 37.785, longitude: -122.445, weight: 0 },
-    // { latitude: 37.785, longitude: -122.443, weight: 1 },
-    // { latitude: 37.785, longitude: -122.441, weight: 0 },
-    // { latitude: 37.785, longitude: -122.439, weight: 1 },
-    // { latitude: 37.785, longitude: -122.437, weight: 0 },
-    // { latitude: 37.785, longitude: -122.435, weight: 1 },
-    // { latitude: 37.782, longitude: -122.447, weight: 0 },
-    // { latitude: 37.783, longitude: -122.445, weight: 1 },
-    // { latitude: 37.783, longitude: -122.443, weight: 0 },
-    // { latitude: 37.783, longitude: -122.441, weight: 1 },
-    // { latitude: 37.783, longitude: -122.439, weight: 1 },
-    // { latitude: 37.782, longitude: -122.439, weight: 1 },
-    // { latitude: 37.782, longitude: -122.437, weight: 0 },
-    // { latitude: 37.786, longitude: -122.447, weight: 0 },
-    // { latitude: 37.786, longitude: -122.445, weight: 1 },
-    // { latitude: 37.786, longitude: -122.443, weight: 1 },
-    // { latitude: 37.786, longitude: -122.441, weight: 0 },
-    // { latitude: 37.785, longitude: -122.435, weight: 1 },
-    // { latitude: 37.785, longitude: -122.434, weight: 0 },
-    // { latitude: 37.785, longitude: -122.431, weight: 0 },
-    // { latitude: 37.785, longitude: -122.431, weight: 0 },
-    // { latitude: 37.785, longitude: -122.431, weight: 0 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.431, weight: 1 },
-    // { latitude: 37.785, longitude: -122.432, weight: 1 },
-  ];
+  const heatMapData = [];
 
   const centerLat = 37.78582; //location.coords.latitude;
   const centerLng = -122.40642; //location.coords.longitude;
@@ -91,6 +47,7 @@ const MapScreen = () => {
           gradient={{
             colors: ["#79BC6A", "#BBCF4C", "#EEC20B", "#F29305", "#E50000"],
             startPoints: [0.01, 0.25, 0.5, 0.75, 1],
+            colorMapSize: 500,
           }}
         />
       </MapView>

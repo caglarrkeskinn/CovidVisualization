@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import supabase from "../lib/supabase";
-import {
-  View,
-  Alert,
-  TextInput,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { View, Alert, TextInput, Text, TouchableOpacity } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 import stylesCatalog from "../components/stylesCatalog";
@@ -15,8 +9,6 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
-  const [website, setWebsite] = useState("");
-  const [bloodType, setBloodType] = useState("");
 
   useEffect(() => {
     if (session) getProfile();
@@ -29,7 +21,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select("username, website, bloodType")
+        .select("username")
         .eq("id", session?.user.id)
         .single();
       if (error && status !== 406) {
@@ -38,8 +30,6 @@ export default function Account({ session }) {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
-        setBloodType(data.bloodType);
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -58,8 +48,6 @@ export default function Account({ session }) {
       const updates = {
         id: session?.user.id,
         username,
-        website,
-        bloodType,
         updated_at: new Date(),
       };
 
@@ -84,13 +72,15 @@ export default function Account({ session }) {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={stylesCatalog.AcContainer}>
-          <View style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}>
+          <View
+            style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}
+          >
             <Text style={stylesCatalog.labelStyle}>Email</Text>
             <TextInput
-              label="Email"
-              style={stylesCatalog.inputStyle}
-              value={session?.user?.email}
               disabled
+              label="Email"
+              style={stylesCatalog.inputStyleEmail}
+              value={session?.user?.email}
             />
           </View>
           <View style={stylesCatalog.AcverticallySpaced}>
@@ -102,26 +92,10 @@ export default function Account({ session }) {
               onChangeText={(text) => setUsername(text)}
             />
           </View>
-          <View style={stylesCatalog.verticallySpaced}>
-            <Text style={stylesCatalog.labelStyle}>Website</Text>
-            <TextInput
-              label="Website"
-              style={stylesCatalog.inputStyle}
-              value={website || ""}
-              onChangeText={(text) => setWebsite(text)}
-            />
-          </View>
-          <View style={stylesCatalog.AcverticallySpaced}>
-            <Text style={stylesCatalog.labelStyle}>Blood Type</Text>
-            <TextInput
-              label="Blood Type"
-              style={stylesCatalog.inputStyle}
-              value={bloodType || ""}
-              onChangeText={(text) => setBloodType(text)}
-            />
-          </View>
 
-          <View style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}>
+          <View
+            style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}
+          >
             <TouchableOpacity
               style={stylesCatalog.AcButton}
               disabled={loading}
@@ -139,7 +113,7 @@ export default function Account({ session }) {
               style={stylesCatalog.AcButton}
               onPress={() => supabase.auth.signOut()}
             >
-              <Text style={{ color: "white" }}>Sign Out</Text>
+              <Text style={{ color: "white" }}>Log Out</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1255,7 +1255,7 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView style={{ marginTop: 0, overflow: "scroll"}}>
+      <ScrollView style={{ marginTop: 0, overflow: "scroll" }}>
         <Text style={stylesCatalog.preventionText}>Prevention</Text>
         <View style={stylesCatalog.col}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -1486,6 +1486,5 @@ const Home = () => {
     </View>
   );
 };
-
 
 export default Home;
