@@ -88,19 +88,20 @@ function AuthNavigator() {
           }}
         />
         <Tab.Screen
-          name="Account"
-          component={() => <Account session={session} />}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account-outline"
-                color={color}
-                size={size}
-              />
-            ),
-          }}
-        /> 
+            name="Account"
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="account-outline"
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          >
+        {() => <Account session={session} />}
+        </Tab.Screen> 
       </Tab.Navigator>
     );
   } else {

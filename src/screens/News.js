@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   Image,
   Linking
@@ -53,17 +52,17 @@ const News = () => {
     })};
 
   return (
-    <View  style={styles.container}>
-          <View style={styles.boxNews}>
+    <View  style={stylesCatalog.newsContainer}>
+          <View style={stylesCatalog.boxNews}>
               <Text style={stylesCatalog.covidHeading}>News</Text>
           </View>
-        <View style={styles.scrollContainer}>    
+        <View style={stylesCatalog.newsScrollContainer}>    
           <ScrollView>
               {newsData.map((news) => (
                 <TouchableOpacity key={news.id} onPress={() => handleNewsPress(news.url)}>
-                  <View style={styles.newsContainer}>
-                    <Image source={news.imageUrl} style={styles.newsImage} />
-                    <Text style={styles.newsTitle}>{news.title}</Text>
+                  <View style={stylesCatalog.newsContainer}>
+                    <Image source={news.imageUrl} style={stylesCatalog.newsImage} />
+                    <Text style={stylesCatalog.newsTitle}>{news.title}</Text>
                   </View>
                 </TouchableOpacity>
               ))}
@@ -72,55 +71,5 @@ const News = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  scrollContainer:{
-    marginBottom:150
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  // covidHeading: {
-  //   color: "#FFF",
-  //   fontSize: 25,
-  //   alignSelf: "center",
-  //   fontWeight: "bold",
-  //   margin: 25,
-  //   marginTop: "15%",
-    
-  // },
-  boxNews: {
-    borderWidth: 2,
-    borderColor: "#27546C",
-    alignItems: "center",
-    textAlign: "center",
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
-    backgroundColor: "#27546C",
-    height: 150,
-  },
-  newsContainer: {
-    flex: 1,
-    backgroundColor: "white",
-    paddingVertical: 10,
-  },
-  newsItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  newsImage: {
-    width: "100%",
-    height: 200,
-    marginBottom: 10,
-  },
-  newsTitle: {
-    padding:5,
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#000",
-  },
-});
 
 export default News;
