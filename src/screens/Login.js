@@ -35,8 +35,9 @@ export default function Login() {
       email: email,
       password: password,
     });
-
+    const checkEmail = "Verify Your Email!";
     if (error) Alert.alert(error.message);
+    else Alert.alert(checkEmail);
     setLoading(false);
   }
   return (
