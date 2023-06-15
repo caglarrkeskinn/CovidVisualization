@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import supabase from "../lib/supabase";
-import {
-  StyleSheet,
-  View,
-  Alert,
-  TextInput,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { View, Alert, TextInput, Text, TouchableOpacity } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 import stylesCatalog from "../components/stylesCatalog";
@@ -16,8 +9,6 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
-  const [website, setWebsite] = useState("");
-  const [bloodType, setBloodType] = useState("");
 
   useEffect(() => {
     if (session) getProfile();
@@ -30,7 +21,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select("username, website, bloodType")
+        .select("username")
         .eq("id", session?.user.id)
         .single();
       if (error && status !== 406) {
@@ -39,8 +30,6 @@ export default function Account({ session }) {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
-        setBloodType(data.bloodType);
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -59,8 +48,6 @@ export default function Account({ session }) {
       const updates = {
         id: session?.user.id,
         username,
-        website,
-        bloodType,
         updated_at: new Date(),
       };
 
@@ -80,51 +67,37 @@ export default function Account({ session }) {
   }
   return (
     <>
-      <View style={styles.boxLogin}>
+      <View style={stylesCatalog.boxLogin}>
         <Text style={stylesCatalog.covidHeading}>Account</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <View style={[styles.verticallySpaced, styles.mt20]}>
-            <Text style={styles.labelStyle}>Email</Text>
+        <View style={stylesCatalog.AcContainer}>
+          <View
+            style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}
+          >
+            <Text style={stylesCatalog.labelStyle}>Email</Text>
             <TextInput
-              label="Email"
-              style={styles.inputStyle}
-              value={session?.user?.email}
               disabled
+              label="Email"
+              style={stylesCatalog.inputStyleEmail}
+              value={session?.user?.email}
             />
           </View>
-          <View style={styles.verticallySpaced}>
-            <Text style={styles.labelStyle}>User Name</Text>
+          <View style={stylesCatalog.AcverticallySpaced}>
+            <Text style={stylesCatalog.labelStyle}>User Name</Text>
             <TextInput
               label="Username"
-              style={styles.inputStyle}
+              style={stylesCatalog.inputStyle}
               value={username || ""}
               onChangeText={(text) => setUsername(text)}
             />
           </View>
-          <View style={styles.verticallySpaced}>
-            <Text style={styles.labelStyle}>Website</Text>
-            <TextInput
-              label="Website"
-              style={styles.inputStyle}
-              value={website || ""}
-              onChangeText={(text) => setWebsite(text)}
-            />
-          </View>
-          <View style={styles.verticallySpaced}>
-            <Text style={styles.labelStyle}>Blood Type</Text>
-            <TextInput
-              label="Blood Type"
-              style={styles.inputStyle}
-              value={bloodType || ""}
-              onChangeText={(text) => setBloodType(text)}
-            />
-          </View>
 
-          <View style={[styles.verticallySpaced, styles.mt20]}>
+          <View
+            style={[stylesCatalog.AcverticallySpaced, stylesCatalog.Acmt20]}
+          >
             <TouchableOpacity
-              style={styles.button}
+              style={stylesCatalog.AcButton}
               disabled={loading}
               onPress={() => updateProfile()}
               title={loading ? "Loading ..." : "Update"}
@@ -135,12 +108,12 @@ export default function Account({ session }) {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.verticallySpaced}>
+          <View style={stylesCatalog.AcverticallySpaced}>
             <TouchableOpacity
-              style={styles.button}
+              style={stylesCatalog.AcButton}
               onPress={() => supabase.auth.signOut()}
             >
-              <Text style={{ color: "white" }}>Sign Out</Text>
+              <Text style={{ color: "white" }}>Log Out</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -148,57 +121,3 @@ export default function Account({ session }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-  boxLogin: {
-    borderWidth: 2,
-    borderColor: "#27546C",
-    alignItems: "center",
-    textAlign: "center",
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
-    backgroundColor: "#27546C",
-    height: 150,
-  },
-  // covidHeading: {
-  //   color: "orange",
-  //   fontSize: 25,
-  //   alignSelf: "center",
-  //   fontWeight: "bold",
-  //   margin: 25,
-  //   marginTop: "15%",
-  // },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
-  mt20: {
-    marginTop: "5%",
-  },
-  inputStyle: {
-    alignSelf: "center",
-    padding: 13,
-    borderWidth: 4,
-    borderColor: "#27546C",
-    borderRadius: 30,
-    width: "100%",
-  },
-  labelStyle: {
-    color: "#27546C",
-    fontSize: 16,
-    fontWeight: "700",
-    padding: 10,
-  },
-  button: {
-    backgroundColor: "#27546C",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    alignSelf: "center",
-    width: 300,
-  },
-});

@@ -99,8 +99,8 @@ function AuthNavigator() {
               />
             ),
           }}
-        > 
-        {() => <Account session={session} />}
+        >
+          {() => <Account session={session} />}
         </Tab.Screen>
       </Tab.Navigator>
     );

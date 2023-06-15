@@ -3,7 +3,6 @@ import {
   View,
   Switch,
   Text,
-  StyleSheet,
   FlatList,
   TouchableOpacity,
 } from "react-native";
@@ -14,7 +13,6 @@ import ItemRows from "../components/ItemRows";
 import MapView, { Heatmap } from "react-native-maps";
 import * as Location from "expo-location";
 import SwitchSelector from "react-native-switch-selector";
-import SQLite from "react-native-sqlite-storage";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import supabase from "../lib/supabase";
 

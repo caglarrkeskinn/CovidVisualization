@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Modal,
   Image,
-  StyleSheet,
   Dimensions,
 } from "react-native";
 import stylesCatalog from "../components/stylesCatalog";
@@ -37,14 +36,9 @@ const Home = () => {
     }
   };
 
-  const handleFormsPress = (url) => {
-    Linking.openURL(url).catch(() => {
-      console.log("Error", url);
-    });
-  };
-  const [vaccEffect, setVaccEffect] = useState([
+  const [gender, setGender] = useState([
     {
-      name: "Yes",
+      name: "Woman",
       population: 0,
       color: "#F00",
       legendFontColor: "#7F7F7F",
@@ -52,32 +46,32 @@ const Home = () => {
       padding: 30,
     },
     {
-      name: "No",
+      name: "Man",
       population: 0,
-      color: "green",
+      color: "rgba(131, 167, 234, 1)",
       legendFontColor: "#7F7F7F",
       legendFontSize: 15,
       padding: 30,
     },
   ]);
   useEffect(() => {
-    getVaccEffect();
+    getSurveys();
   }, []);
 
-  async function getVaccEffect() {
+  async function getSurveys() {
     try {
       let { data, error, status } = await supabase
         .from("surveys")
-        .select("vacc_effect");
+        .select("Cinsiyetiniz");
 
       if (error && status !== 406) {
         throw error;
       }
 
       if (data) {
-        let updatedVaccEffect = [
+        let updatedGender = [
           {
-            name: "Yes",
+            name: "Woman",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
@@ -85,38 +79,38 @@ const Home = () => {
             padding: 70,
           },
           {
-            name: "No",
+            name: "Man",
             population: 0,
-            color: "green",
+            color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
           },
         ];
         data.forEach((item) => {
-          if (item.vacc_effect === "Evet") {
-            updatedVaccEffect.find(
-              (vaccEffect) => vaccEffect.name === "Yes"
+          if (item.Cinsiyetiniz === "Kadın") {
+            updatedGender.find(
+              (gender) => gender.name === "Woman"
             ).population += 1;
-          } else if (item.vacc_effect === "Hayır") {
-            updatedVaccEffect.find(
-              (vaccEffect) => vaccEffect.name === "No"
+          } else if (item.Cinsiyetiniz === "Erkek") {
+            updatedGender.find(
+              (gender) => gender.name === "Man"
             ).population += 1;
           }
         });
 
-        setVaccEffect(updatedVaccEffect);
-        updatedVaccEffect = [
+        setGender(updatedGender);
+        updatedGender = [
           {
-            name: "Yes",
+            name: "Woman",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
+            legendFontSize: 18,
           },
           {
-            name: "No",
+            name: "Man",
             population: 0,
-            color: "green",
+            color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
           },
@@ -126,18 +120,25 @@ const Home = () => {
       console.error("Veri çekme hatası:", error);
     }
   }
-
-  const [dose, setDose] = useState([
+  const [age, setAge] = useState([
     {
-      name: "1",
+      name: "Under 18",
       population: 0,
-      color: "blue",
+      color: "#F00",
       legendFontColor: "#7F7F7F",
       legendFontSize: 15,
       padding: 30,
     },
     {
-      name: "2",
+      name: "18 - 30",
+      population: 0,
+      color: "rgba(131, 167, 234, 1)",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "30 - 45",
       population: 0,
       color: "tomato",
       legendFontColor: "#7F7F7F",
@@ -145,15 +146,15 @@ const Home = () => {
       padding: 30,
     },
     {
-      name: "3",
+      name: "45 - 64",
       population: 0,
-      color: "orange",
+      color: "rgba(125, 149, 222, 1)",
       legendFontColor: "#7F7F7F",
       legendFontSize: 15,
       padding: 30,
     },
     {
-      name: "4 +",
+      name: "65+",
       population: 0,
       color: "green",
       legendFontColor: "#7F7F7F",
@@ -162,31 +163,39 @@ const Home = () => {
     },
   ]);
   useEffect(() => {
-    getDoses();
+    getAge();
   }, []);
 
-  async function getDoses() {
+  async function getAge() {
     try {
       let { data, error, status } = await supabase
         .from("surveys")
-        .select("vaccine_doses");
+        .select("YasAralıgı");
 
       if (error && status !== 406) {
         throw error;
       }
 
       if (data) {
-        let updatedDoses = [
+        let updatedAge = [
           {
-            name: "1",
+            name: "Under 18",
             population: 0,
-            color: "blue",
+            color: "#F00",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
             padding: 30,
           },
           {
-            name: "2",
+            name: "18 - 30",
+            population: 0,
+            color: "rgba(131, 167, 234, 1)",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "30 - 45",
             population: 0,
             color: "tomato",
             legendFontColor: "#7F7F7F",
@@ -194,15 +203,15 @@ const Home = () => {
             padding: 30,
           },
           {
-            name: "3",
+            name: "45 - 64",
             population: 0,
-            color: "orange",
+            color: "rgba(125, 149, 222, 1)",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
             padding: 30,
           },
           {
-            name: "4 +",
+            name: "65+",
             population: 0,
             color: "green",
             legendFontColor: "#7F7F7F",
@@ -211,29 +220,37 @@ const Home = () => {
           },
         ];
         data.forEach((item) => {
-          if (item.vaccine_doses === "1") {
-            updatedDoses.find((dose) => dose.name === "1").population += 1;
-          } else if (item.vaccine_doses === "2") {
-            updatedDoses.find((dose) => dose.name === "2").population += 1;
-          } else if (item.vaccine_doses === "3") {
-            updatedDoses.find((dose) => dose.name === "3").population += 1;
-          } else if (item.vaccine_doses === "4 +") {
-            updatedDoses.find((dose) => dose.name === "4 +").population += 1;
+          if (item.YasAralıgı === "18 den küçük") {
+            updatedAge.find((age) => age.name === "Under 18").population += 1;
+          } else if (item.YasAralıgı === "18 - 30") {
+            updatedAge.find((age) => age.name === "18 - 30").population += 1;
+          } else if (item.YasAralıgı === "30 - 45") {
+            updatedAge.find((age) => age.name === "30 - 45").population += 1;
+          } else if (item.YasAralıgı === "45 - 64") {
+            updatedAge.find((age) => age.name === "65+").population += 1;
           }
         });
 
-        setDose(updatedDoses);
-        updatedDoses = [
+        setAge(updatedAge);
+        updatedAge = [
           {
-            name: "1",
+            name: "Under 18",
             population: 0,
-            color: "blue",
+            color: "#F00",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
             padding: 30,
           },
           {
-            name: "2",
+            name: "18 - 30",
+            population: 0,
+            color: "rgba(131, 167, 234, 1)",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "30 - 45",
             population: 0,
             color: "tomato",
             legendFontColor: "#7F7F7F",
@@ -241,15 +258,15 @@ const Home = () => {
             padding: 30,
           },
           {
-            name: "3",
+            name: "45 - 64",
             population: 0,
-            color: "orange",
+            color: "rgba(125, 149, 222, 1)",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
             padding: 30,
           },
           {
-            name: "4 +",
+            name: "65+",
             population: 0,
             color: "green",
             legendFontColor: "#7F7F7F",
@@ -262,364 +279,6 @@ const Home = () => {
       console.error("Veri çekme hatası:", error);
     }
   }
-
-  const [turn, setTurn] = useState([
-    {
-      name: "7",
-      population: 0,
-      color: "#F00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "14",
-      population: 0,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "14+",
-      population: 0,
-      color: "black",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-  ]);
-  useEffect(() => {
-    getTurn();
-  }, []);
-
-  async function getTurn() {
-    try {
-      let { data, error, status } = await supabase
-        .from("surveys")
-        .select("Testnegatif");
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        let updatedTurn = [
-          {
-            name: "7",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 70,
-          },
-          {
-            name: "14",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-          {
-            name: "14+",
-            population: 0,
-            color: "black",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-        data.forEach((item) => {
-          if (item.Testnegatif === "7") {
-            updatedTurn.find((turn) => turn.name === "7").population += 1;
-          } else if (item.Testnegatif === "14") {
-            updatedTurn.find((turn) => turn.name === "14").population += 1;
-          } else if (item.Testnegatif === "14+") {
-            updatedTurn.find((turn) => turn.name === "14+").population += 1;
-          }
-        });
-
-        setTurn(updatedTurn);
-        updatedTurn = [
-          {
-            name: "7",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 70,
-          },
-          {
-            name: "14",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-          {
-            name: "14+",
-            population: 0,
-            color: "black",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-      }
-    } catch (error) {
-      console.error("Veri çekme hatası:", error);
-    }
-  }
-
-  const [vaccine, setVaccine] = useState([
-    {
-      name: "Yes",
-      population: 0,
-      color: "green",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "No",
-      population: 0,
-      color: "red",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-  ]);
-  useEffect(() => {
-    getVaccine();
-  }, []);
-
-  async function getVaccine() {
-    try {
-      let { data, error, status } = await supabase
-        .from("surveys")
-        .select("Asi");
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        let updatedVaccine = [
-          {
-            name: "Yes",
-            population: 0,
-            color: "green",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 70,
-          },
-          {
-            name: "No",
-            population: 0,
-            color: "red",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-        data.forEach((item) => {
-          if (item.Asi === "Evet") {
-            updatedVaccine.find(
-              (vaccine) => vaccine.name === "Yes"
-            ).population += 1;
-          } else if (item.Asi === "Hayır") {
-            updatedVaccine.find(
-              (vaccine) => vaccine.name === "No"
-            ).population += 1;
-          }
-        });
-
-        setVaccine(updatedVaccine);
-        updatedVaccine = [
-          {
-            name: "Yes",
-            population: 0,
-            color: "green",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-          {
-            name: "No",
-            population: 0,
-            color: "red",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-      }
-    } catch (error) {
-      console.error("Veri çekme hatası:", error);
-    }
-  }
-
-  const [severity, setSeverity] = useState([
-    {
-      name: "Severe",
-      population: 0,
-      color: "#F00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "Moderate",
-      population: 0,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-  ]);
-  useEffect(() => {
-    getSeverity();
-  }, []);
-
-  async function getSeverity() {
-    try {
-      let { data, error, status } = await supabase
-        .from("surveys")
-        .select("Covidinasilgecirdiniz");
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        let updatedSeverity = [
-          {
-            name: "Severe",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 70,
-          },
-          {
-            name: "Moderate",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-        data.forEach((item) => {
-          if (item.Covidinasilgecirdiniz === "Ağır") {
-            updatedSeverity.find(
-              (severity) => severity.name === "Severe"
-            ).population += 1;
-          } else if (item.Covidinasilgecirdiniz === "Hafif") {
-            updatedSeverity.find(
-              (severity) => severity.name === "Moderate"
-            ).population += 1;
-          }
-        });
-
-        setSeverity(updatedSeverity);
-        updatedSeverity = [
-          {
-            name: "Severe",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-          {
-            name: "Moderate",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-      }
-    } catch (error) {
-      console.error("Veri çekme hatası:", error);
-    }
-  }
-
-  const [had, setHad] = useState([
-    {
-      name: "Yes",
-      population: 0,
-      color: "#F00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "No",
-      population: 0,
-      color: "green",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-  ]);
-  useEffect(() => {
-    getHad();
-  }, []);
-
-  async function getHad() {
-    try {
-      let { data, error, status } = await supabase
-        .from("surveys")
-        .select("Covidgecirdinizmi");
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        let updatedHad = [
-          {
-            name: "Yes",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 70,
-          },
-          {
-            name: "No",
-            population: 0,
-            color: "green",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-        data.forEach((item) => {
-          if (item.Covidgecirdinizmi === "Evet") {
-            updatedHad.find((had) => had.name === "Yes").population += 1;
-          } else if (item.Covidgecirdinizmi === "Hayır") {
-            updatedHad.find((had) => had.name === "No").population += 1;
-          }
-        });
-
-        setHad(updatedHad);
-        updatedHad = [
-          {
-            name: "Yes",
-            population: 0,
-            color: "#F00",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-          {
-            name: "No",
-            population: 0,
-            color: "green",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-          },
-        ];
-      }
-    } catch (error) {
-      console.error("Veri çekme hatası:", error);
-    }
-  }
-
   const [blood, setBlood] = useState([
     {
       name: "ARh+",
@@ -863,10 +522,9 @@ const Home = () => {
       console.error("Veri çekme hatası:", error);
     }
   }
-
-  const [age, setAge] = useState([
+  const [had, setHad] = useState([
     {
-      name: "Under 18",
+      name: "Yes",
       population: 0,
       color: "#F00",
       legendFontColor: "#7F7F7F",
@@ -874,31 +532,7 @@ const Home = () => {
       padding: 30,
     },
     {
-      name: "18 - 30",
-      population: 0,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "30 - 45",
-      population: 0,
-      color: "tomato",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "45 - 64",
-      population: 0,
-      color: "rgba(125, 149, 222, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15,
-      padding: 30,
-    },
-    {
-      name: "65+",
+      name: "No",
       population: 0,
       color: "green",
       legendFontColor: "#7F7F7F",
@@ -907,115 +541,60 @@ const Home = () => {
     },
   ]);
   useEffect(() => {
-    getAge();
+    getHad();
   }, []);
 
-  async function getAge() {
+  async function getHad() {
     try {
       let { data, error, status } = await supabase
         .from("surveys")
-        .select("YasAralıgı");
+        .select("Covidgecirdinizmi");
 
       if (error && status !== 406) {
         throw error;
       }
 
       if (data) {
-        let updatedAge = [
+        let updatedHad = [
           {
-            name: "Under 18",
+            name: "Yes",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
-            padding: 30,
+            padding: 70,
           },
           {
-            name: "18 - 30",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "30 - 45",
-            population: 0,
-            color: "tomato",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "45 - 64",
-            population: 0,
-            color: "rgba(125, 149, 222, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "65+",
+            name: "No",
             population: 0,
             color: "green",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
-            padding: 30,
           },
         ];
         data.forEach((item) => {
-          if (item.YasAralıgı === "18 den küçük") {
-            updatedAge.find((age) => age.name === "Under 18").population += 1;
-          } else if (item.YasAralıgı === "18 - 30") {
-            updatedAge.find((age) => age.name === "18 - 30").population += 1;
-          } else if (item.YasAralıgı === "30 - 45") {
-            updatedAge.find((age) => age.name === "30 - 45").population += 1;
-          } else if (item.YasAralıgı === "45 - 64") {
-            updatedAge.find((age) => age.name === "65+").population += 1;
+          if (item.Covidgecirdinizmi === "Evet") {
+            updatedHad.find((had) => had.name === "Yes").population += 1;
+          } else if (item.Covidgecirdinizmi === "Hayır") {
+            updatedHad.find((had) => had.name === "No").population += 1;
           }
         });
 
-        setAge(updatedAge);
-        updatedAge = [
+        setHad(updatedHad);
+        updatedHad = [
           {
-            name: "Under 18",
+            name: "Yes",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
-            padding: 30,
           },
           {
-            name: "18 - 30",
-            population: 0,
-            color: "rgba(131, 167, 234, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "30 - 45",
-            population: 0,
-            color: "tomato",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "45 - 64",
-            population: 0,
-            color: "rgba(125, 149, 222, 1)",
-            legendFontColor: "#7F7F7F",
-            legendFontSize: 15,
-            padding: 30,
-          },
-          {
-            name: "65+",
+            name: "No",
             population: 0,
             color: "green",
             legendFontColor: "#7F7F7F",
             legendFontSize: 15,
-            padding: 30,
           },
         ];
       }
@@ -1023,10 +602,9 @@ const Home = () => {
       console.error("Veri çekme hatası:", error);
     }
   }
-
-  const [gender, setGender] = useState([
+  const [severity, setSeverity] = useState([
     {
-      name: "Woman",
+      name: "Severe",
       population: 0,
       color: "#F00",
       legendFontColor: "#7F7F7F",
@@ -1034,7 +612,7 @@ const Home = () => {
       padding: 30,
     },
     {
-      name: "Man",
+      name: "Moderate",
       population: 0,
       color: "rgba(131, 167, 234, 1)",
       legendFontColor: "#7F7F7F",
@@ -1043,23 +621,23 @@ const Home = () => {
     },
   ]);
   useEffect(() => {
-    getSurveys();
+    getSeverity();
   }, []);
 
-  async function getSurveys() {
+  async function getSeverity() {
     try {
       let { data, error, status } = await supabase
         .from("surveys")
-        .select("Cinsiyetiniz");
+        .select("Covidinasilgecirdiniz");
 
       if (error && status !== 406) {
         throw error;
       }
 
       if (data) {
-        let updatedGender = [
+        let updatedSeverity = [
           {
-            name: "Woman",
+            name: "Severe",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
@@ -1067,7 +645,7 @@ const Home = () => {
             padding: 70,
           },
           {
-            name: "Man",
+            name: "Moderate",
             population: 0,
             color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
@@ -1075,28 +653,28 @@ const Home = () => {
           },
         ];
         data.forEach((item) => {
-          if (item.Cinsiyetiniz === "Kadın") {
-            updatedGender.find(
-              (gender) => gender.name === "Woman"
+          if (item.Covidinasilgecirdiniz === "Ağır") {
+            updatedSeverity.find(
+              (severity) => severity.name === "Severe"
             ).population += 1;
-          } else if (item.Cinsiyetiniz === "Erkek") {
-            updatedGender.find(
-              (gender) => gender.name === "Man"
+          } else if (item.Covidinasilgecirdiniz === "Hafif") {
+            updatedSeverity.find(
+              (severity) => severity.name === "Moderate"
             ).population += 1;
           }
         });
 
-        setGender(updatedGender);
-        updatedGender = [
+        setSeverity(updatedSeverity);
+        updatedSeverity = [
           {
-            name: "Woman",
+            name: "Severe",
             population: 0,
             color: "#F00",
             legendFontColor: "#7F7F7F",
-            legendFontSize: 18,
+            legendFontSize: 15,
           },
           {
-            name: "Man",
+            name: "Moderate",
             population: 0,
             color: "rgba(131, 167, 234, 1)",
             legendFontColor: "#7F7F7F",
@@ -1109,8 +687,415 @@ const Home = () => {
     }
   }
 
-  console.log("********");
-  console.log(age);
+  const [vaccine, setVaccine] = useState([
+    {
+      name: "Yes",
+      population: 0,
+      color: "green",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "No",
+      population: 0,
+      color: "red",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+  ]);
+  useEffect(() => {
+    getVaccine();
+  }, []);
+
+  async function getVaccine() {
+    try {
+      let { data, error, status } = await supabase
+        .from("surveys")
+        .select("Asi");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let updatedVaccine = [
+          {
+            name: "Yes",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 70,
+          },
+          {
+            name: "No",
+            population: 0,
+            color: "red",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+        data.forEach((item) => {
+          if (item.Asi === "Evet") {
+            updatedVaccine.find(
+              (vaccine) => vaccine.name === "Yes"
+            ).population += 1;
+          } else if (item.Asi === "Hayır") {
+            updatedVaccine.find(
+              (vaccine) => vaccine.name === "No"
+            ).population += 1;
+          }
+        });
+
+        setVaccine(updatedVaccine);
+        updatedVaccine = [
+          {
+            name: "Yes",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+          {
+            name: "No",
+            population: 0,
+            color: "red",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
+  const [turn, setTurn] = useState([
+    {
+      name: "7",
+      population: 0,
+      color: "#F00",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "14",
+      population: 0,
+      color: "rgba(131, 167, 234, 1)",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "14+",
+      population: 0,
+      color: "black",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+  ]);
+  useEffect(() => {
+    getTurn();
+  }, []);
+
+  async function getTurn() {
+    try {
+      let { data, error, status } = await supabase
+        .from("surveys")
+        .select("Testnegatif");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let updatedTurn = [
+          {
+            name: "7",
+            population: 0,
+            color: "#F00",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 70,
+          },
+          {
+            name: "14",
+            population: 0,
+            color: "rgba(131, 167, 234, 1)",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+          {
+            name: "14+",
+            population: 0,
+            color: "black",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+        data.forEach((item) => {
+          if (item.Testnegatif === "7") {
+            updatedTurn.find((turn) => turn.name === "7").population += 1;
+          } else if (item.Testnegatif === "14") {
+            updatedTurn.find((turn) => turn.name === "14").population += 1;
+          } else if (item.Testnegatif === "14+") {
+            updatedTurn.find((turn) => turn.name === "14+").population += 1;
+          }
+        });
+
+        setTurn(updatedTurn);
+        updatedTurn = [
+          {
+            name: "7",
+            population: 0,
+            color: "#F00",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 70,
+          },
+          {
+            name: "14",
+            population: 0,
+            color: "rgba(131, 167, 234, 1)",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+          {
+            name: "14+",
+            population: 0,
+            color: "black",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
+
+  const [dose, setDose] = useState([
+    {
+      name: "1",
+      population: 0,
+      color: "blue",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "2",
+      population: 0,
+      color: "tomato",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "3",
+      population: 0,
+      color: "orange",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "4 +",
+      population: 0,
+      color: "green",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+  ]);
+  useEffect(() => {
+    getDoses();
+  }, []);
+
+  async function getDoses() {
+    try {
+      let { data, error, status } = await supabase
+        .from("surveys")
+        .select("vaccine_doses");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let updatedDoses = [
+          {
+            name: "1",
+            population: 0,
+            color: "blue",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "2",
+            population: 0,
+            color: "tomato",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "3",
+            population: 0,
+            color: "orange",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "4 +",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+        ];
+        data.forEach((item) => {
+          if (item.vaccine_doses === "1") {
+            updatedDoses.find((dose) => dose.name === "1").population += 1;
+          } else if (item.vaccine_doses === "2") {
+            updatedDoses.find((dose) => dose.name === "2").population += 1;
+          } else if (item.vaccine_doses === "3") {
+            updatedDoses.find((dose) => dose.name === "3").population += 1;
+          } else if (item.vaccine_doses === "4 +") {
+            updatedDoses.find((dose) => dose.name === "4 +").population += 1;
+          }
+        });
+
+        setDose(updatedDoses);
+        updatedDoses = [
+          {
+            name: "1",
+            population: 0,
+            color: "blue",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "2",
+            population: 0,
+            color: "tomato",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "3",
+            population: 0,
+            color: "orange",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+          {
+            name: "4 +",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 30,
+          },
+        ];
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
+  const [vaccEffect, setVaccEffect] = useState([
+    {
+      name: "Yes",
+      population: 0,
+      color: "#F00",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+    {
+      name: "No",
+      population: 0,
+      color: "green",
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15,
+      padding: 30,
+    },
+  ]);
+  useEffect(() => {
+    getVaccEffect();
+  }, []);
+
+  async function getVaccEffect() {
+    try {
+      let { data, error, status } = await supabase
+        .from("surveys")
+        .select("vacc_effect");
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        let updatedVaccEffect = [
+          {
+            name: "Yes",
+            population: 0,
+            color: "#F00",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+            padding: 70,
+          },
+          {
+            name: "No",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+        data.forEach((item) => {
+          if (item.vacc_effect === "Evet") {
+            updatedVaccEffect.find(
+              (vaccEffect) => vaccEffect.name === "Yes"
+            ).population += 1;
+          } else if (item.vacc_effect === "Hayır") {
+            updatedVaccEffect.find(
+              (vaccEffect) => vaccEffect.name === "No"
+            ).population += 1;
+          }
+        });
+
+        setVaccEffect(updatedVaccEffect);
+        updatedVaccEffect = [
+          {
+            name: "Yes",
+            population: 0,
+            color: "#F00",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+          {
+            name: "No",
+            population: 0,
+            color: "green",
+            legendFontColor: "#7F7F7F",
+            legendFontSize: 15,
+          },
+        ];
+      }
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+    }
+  }
 
   const [showInfo, setShowInfo] = useState(false);
 
@@ -1274,27 +1259,27 @@ const Home = () => {
         <Text style={stylesCatalog.preventionText}>Prevention</Text>
         <View style={stylesCatalog.col}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={styles.container}>
-              <View style={styles.card}>
+            <View style={stylesCatalog.HomeContainer}>
+              <View style={stylesCatalog.Homecard}>
                 <Image
                   source={require("../Images/prevention-mask.png")}
-                  style={styles.image}
+                  style={stylesCatalog.Homeimage}
                 />
-                <Text style={styles.text}>Use Mask</Text>
+                <Text style={stylesCatalog.Hometext}>Use Mask</Text>
               </View>
-              <View style={styles.card}>
+              <View style={stylesCatalog.Homecard}>
                 <Image
                   source={require("../Images/prevention-wash.png")}
-                  style={styles.image}
+                  style={stylesCatalog.Homeimage}
                 />
-                <Text style={styles.text}>Wash Hands</Text>
+                <Text style={stylesCatalog.Hometext}>Wash Hands</Text>
               </View>
-              <View style={styles.card}>
+              <View style={stylesCatalog.Homecard}>
                 <Image
                   source={require("../Images/prevention-contact.jpg")}
-                  style={styles.image2}
+                  style={stylesCatalog.Homeimage2}
                 />
-                <Text style={styles.text}>Avoid Close Contacts</Text>
+                <Text style={stylesCatalog.Hometext}>Avoid Close Contacts</Text>
               </View>
             </View>
           </ScrollView>
@@ -1501,37 +1486,5 @@ const Home = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  card: {
-    width: 150,
-    marginLeft: 10,
-    marginRight: 20,
-  },
-  image: {
-    width: "110%",
-    height: 165,
-    resizeMode: "center",
-    borderRadius: 50,
-  },
-  image2: {
-    width: "100%",
-    height: 165,
-    width: 170,
-    resizeMode: "cover",
-    borderRadius: 50,
-  },
-  text: {
-    marginTop: 15,
-    marginLeft: 10,
-    textAlign: "center",
-    fontSize: 16,
-    color: "black",
-  },
-});
 
 export default Home;
